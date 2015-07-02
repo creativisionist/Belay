@@ -1,0 +1,17 @@
+<%= form_for @task do |f| %>
+
+  <div>
+    <%= f.label :to_do %>
+    <%= f.text_field :to_do %>
+  </div>
+
+  <div>
+    <%= f.label :amount_earned %>
+    <%= f.text_field :amount_earned %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %>
