@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: 'tasks#index'
+  devise_for :users, :controllers => { registrations: 'users/registrations' }
+  namespace :users do
+    resources :children
+  end
 
-  resources :tasks, :users, :rewards
+  resources :tasks
+  resources :rewards
   # resources :users do
   #   resources :tasks
   #   resources :rewards

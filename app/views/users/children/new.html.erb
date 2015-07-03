@@ -1,7 +1,7 @@
-<h2>Hello, parent.  Sign up</h2>
+<h2>Sign up your children:</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<%= form_for @user, :url => users_children_path do |f| %>
+
 
   <div class="field">
     <%= f.label :email %><br />
@@ -25,5 +25,3 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
