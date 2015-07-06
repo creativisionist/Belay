@@ -1,13 +1,10 @@
 class TasksController < ApplicationController
-
-  # def index
-  #   user = User.where(id: params[:user_id])
-  #   if user.role = 'child'
-  #     @tasks = Task.where(user_id: params[:user_id])
-  #   elsif user.role = 'parent'
-  #     @tasks = user.children.each.child.tasks
-  #   end
-  # end
+before_action :authenticate_parent!, :except => [:index]
+  
+  def index
+    user = User.where(id: params[:user_id])
+    
+  end
 
   # def new
   #   @task = Task.new
