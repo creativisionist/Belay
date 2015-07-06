@@ -10,6 +10,11 @@ class Users::ChildrenController < ApplicationController
     @user = User.new(child_params)
     @user.role_id = 2
     @user.parent_id = params[:parent_id]
+    if @user.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def show
