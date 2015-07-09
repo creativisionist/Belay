@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :only => [:index]
   before_action :authenticate_parent!, :except => [:index]
 
   def index
