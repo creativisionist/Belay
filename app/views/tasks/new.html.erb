@@ -1,17 +1,17 @@
-<%= form_for @task do |f| %>
+<%= form_tag "/tasks", method: :post do %>
 
   <div>
-    <%= f.label :to_do %>
-    <%= f.text_field :to_do %>
+    <%= label_tag :to_do %>
+    <%= text_field_tag :to_do %>
   </div>
 
   <div>
-    <%= f.label :amount_earned %>
-    <%= f.text_field :amount_earned %>
+    <%= label_tag :amount_earned %>
+    <%= text_field_tag :amount_earned %>
   </div>
 
   <div>
-    <%= f.submit %>
+    <%= submit_tag %>
   </div>
 
 <% end %>

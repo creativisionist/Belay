@@ -12,7 +12,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(to_do: params[:to_do], user_id: params[:user_id], reward_id: params[:reward_id], amount_earned: params[:amount_earned], status: params[:status])
+    @task = Task.new(to_do: params[:to_do], reward_id: params[:reward_id], amount_earned: params[:amount_earned], status: params[:status], user_id: current_user.id)
     if @task.save
       #flash message
       redirect_to "/tasks"
