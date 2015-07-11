@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "tasks#index"
+  root to: "home#index"
   devise_for :users, :controllers => { registrations: 'users/registrations'}
   namespace :users do
     resources :children
