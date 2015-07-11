@@ -1,0 +1,23 @@
+<h1>Say it ain't so!  Remember to reward well:</h1>
+
+<%= form_tag "/rewards/#{@reward.id}", method: :patch do %>
+  <div>
+    <%= label_tag :description %>
+    <%= text_field_tag :description %>
+  </div>
+
+  <div>
+    <%= label_tag :image_url %>
+    <%= text_field_tag :image_url %>
+  </div>
+
+  <div>
+    <%= label_tag :amount_cost %>
+    <%= text_field_tag :amount_cost %>
+  </div>
+
+  <div>
+    <%= submit_tag "Edit" %>
+  </div>
+
+<% end %>

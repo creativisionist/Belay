@@ -26,11 +26,22 @@ class RewardsController < ApplicationController
   end
 
   def edit
+    reward_id = params[:id]
+    @reward = Reward.find_by(id: reward_id)
   end
 
   def update
+    reward_id = params[:id]
+    @reward = Reward.find_by(id: reward_id)
+    @reward.update(description: params[:description], image_url: params[:image_url], amount_cost: params[:amount_cost], user_id: current_user.id)
+    #flash message
+    redirect_to "/rewards"
   end
 
   def destroy
+    reward_id = params[:id]
+    reward = Reward.find_by(id:reward_id)
+    reward.destroy
+    redirect_to "/rewards"
   end
 end
