@@ -1,0 +1,17 @@
+<h1>Edit your task:</h1>
+
+<%= form_tag "/tasks/#{@task.id}", method: :patch do %>
+  <div>
+    <%= label_tag :to_do %>
+    <%= text_field_tag :to_do %>
+  </div>
+
+  <div>
+    <%= label_tag :amount_earned %>
+    <%= text_field_tag :amount_earned %>
+  </div>
+
+  <div>
+    <%= submit_tag "Edit" %>
+  </div>
+<% end %>

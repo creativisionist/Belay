@@ -1,0 +1,14 @@
+<h1>Here is your task:</h1>
+
+<div>
+  Task: <%= @task.to_do %>
+</div>
+<div>
+  Amount: <%= @task.amount_earned %>
+</div>
+<div>
+  Status: <%= @task.status %>
+</div>
+
+<%= button_to "Edit", edit_task_path, method: :get %>
+<%= button_to "Delete", task_path, method: :delete %>

@@ -1,13 +1,15 @@
 <h1>Tasks Needing to be Done:</h1>
 
 <% @tasks.each do |task| %>
-  <div>
-    Task: <%= task.to_do %>
-  </div>
-  <div>
-    Amount: <%= task.amount_earned %>
-  </div>
-  <div>
-    Status: <%= task.status %>
-  </div>
+  <a href="/tasks/<%= task.id %>" title="Edit Task">
+    <div>
+      Task: <%= task.to_do %>
+    </div>
+    <div>
+      Amount: <%= task.amount_earned %>
+    </div>
+    <div>
+      Status: <%= task.status %>
+    </div>
+  </a>
 <% end %>
