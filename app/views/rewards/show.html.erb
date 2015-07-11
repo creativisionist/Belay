@@ -1,0 +1,14 @@
+<h1>Edit your reward here:</h1>
+
+<div>
+  Description: <%= @reward.description %>
+</div>
+<div>
+  <%= @reward.image_url %>
+</div>
+<div>
+  Price: <%= @reward.amount_cost %>
+</div>
+
+<%= button_to "Edit", edit_reward_path, method: :get %>
+<%= button_to "Delete", task_path, method: :delete %>

@@ -1,0 +1,16 @@
+<h1>Everyone Loves Getting Rewarded. :)</h1>
+
+<% @rewards.each do |reward| %>
+  <a href="/rewards/<%= reward.id %>" title="Edit Reward">
+  <div>
+    Description: <%= reward.description %>
+  </div>
+
+  <div>
+    <%= image_tag reward.image_url %>
+  </div>
+
+  <div>
+    Price: <%= reward.amount_cost %>
+  </div>
+<% end %>
