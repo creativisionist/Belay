@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712195428) do
+ActiveRecord::Schema.define(version: 20150712211225) do
 
   create_table "rewards", force: :cascade do |t|
     t.string   "description", limit: 255
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150712195428) do
     t.integer  "task_id",     limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "child_id",    limit: 4
   end
 
   create_table "roles", force: :cascade do |t|
