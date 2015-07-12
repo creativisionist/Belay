@@ -3,8 +3,8 @@ class TasksController < ApplicationController
   before_action :authenticate_parent!, :except => [:index]
 
   def index
-    @user = User.where(id: params[:user_id])
-    @tasks = Task.all
+    @user = User.where(id: params[:user_id], status: "incomplete")
+    @tasks = current_user.tasks
   end
 
   def show
