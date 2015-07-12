@@ -17,7 +17,7 @@ class RewardsController < ApplicationController
   end
 
   def create
-    @reward = Reward.new(description: params[:description], image_url: params[:image_url], amount_cost: params[:amount_cost], user_id: current_user.id)
+    @reward = Reward.new(description: params[:description], image_url: params[:image_url], amount_cost: params[:amount_cost], user_id: current_user.id, child_id: params[:child])
     if @reward.save
       redirect_to "/rewards"
     else
