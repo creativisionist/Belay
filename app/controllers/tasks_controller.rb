@@ -3,11 +3,11 @@ class TasksController < ApplicationController
   before_action :authenticate_parent!, :except => [:index]
 
   def index
-    @user = User.where(id: params[:user_id], status: "incomplete")
+    @user = User.where(id: params[:user_id])
     if user_is_child?
-      @tasks = current_user.child_tasks
+      @tasks = current_user.child_tasks.where(status: "incomplete")
     else
-      @tasks = current_user.tasks
+      @tasks = current_user.tasks.where(status: "incomplete")
     end
   end
 
@@ -21,7 +21,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(to_do: params[:to_do], reward_id: params[:reward_id], amount_earned: params[:amount_earned], status: params[:status], user_id: current_user.id, child_id: params[:child_id])
+    @task = Task.new(to_do: params[:to_do], reward_id: params[:reward_id], amount_earned: params[:amount_earned], status: "incomplete", user_id: current_user.id, child_id: params[:child])
     #add numericality
     if @task.save
       #flash message
