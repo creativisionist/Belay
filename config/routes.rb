@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :tasks
+  patch '/update_status/:id' => 'tasks#update_status'
   resources :rewards
   # resources :users do
   #   resources :tasks
