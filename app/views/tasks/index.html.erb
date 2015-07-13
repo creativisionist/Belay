@@ -8,8 +8,18 @@
     <div>
       Amount: <%= task.amount_earned %>
     </div>
-    <div>
       Status: <%= task.status %>
-    </div>
   </a>
+    <% if user_is_child? %>
+      <div>
+        <%= button_to "Complete", "/update_status/#{task.id}", method: :patch, params: { status: "Pending" } %>
+      </div>
+    <% else %>
+      <div>
+        <% if task.status == "Pending" %>
+          <%= button_to "Approve", "/update_status/#{task.id}", method: :patch, params: { status: :complete } %>
+          <%= button_to "Not actually complete", "/update_status/#{task.id}", method: :patch, params: { status: "Incomplete" } %>
+        <% end %>
+      </div>
+    <% end %>
 <% end %>

@@ -10,9 +10,11 @@
     <%= text_field_tag :amount_earned %>
   </div>
 
+
   <div>
     <%= select_tag :child, options_from_collection_for_select(current_user.children, 'id', 'email') %>
   </div>
+
 
   <div>
     <%= submit_tag %>

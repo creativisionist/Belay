@@ -1,13 +1,13 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_parent!, :except => [:index]
+  before_action :authenticate_parent!, :except => [:index, :update_status]
 
   def index
     @user = User.where(id: params[:user_id])
     if user_is_child?
       @tasks = current_user.child_tasks.where(status: "incomplete")
     else
-      @tasks = current_user.tasks.where(status: "incomplete")
+      @tasks = current_user.tasks.where(status: ["pending","incomplete"])
     end
   end
 
@@ -21,7 +21,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(to_do: params[:to_do], reward_id: params[:reward_id], amount_earned: params[:amount_earned], status: "incomplete", user_id: current_user.id, child_id: params[:child])
+    @task = Task.new(to_do: params[:to_do], reward_id: params[:reward_id], amount_earned: params[:amount_earned], status: "Incomplete", user_id: current_user.id, child_id: params[:child])
     #add numericality
     if @task.save
       #flash message
@@ -40,6 +40,14 @@ class TasksController < ApplicationController
     task_id = params[:id]
     @task = Task.find_by(id: task_id)
     @task.update(to_do: params[:to_do], reward_id: params[:reward_id], amount_earned: params[:amount_earned], status: params[:status], user_id: current_user.id)
+    #flash message
+    redirect_to "/tasks"
+  end
+
+  def update_status
+    task_id = params[:id]
+    @task = Task.find_by(id: task_id)
+    @task.update(status: params[:status])
     #flash message
     redirect_to "/tasks"
   end
