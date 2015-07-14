@@ -21,7 +21,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(to_do: params[:to_do], reward_id: params[:reward_id], amount_earned: params[:amount_earned], status: "incomplete", user_id: current_user.id, child_id: params[:child])
+    @task = Task.new(to_do: params[:to_do], amount_earned: params[:amount_earned], status: "incomplete", user_id: current_user.id, child_id: params[:child])
     #add numericality
     if @task.save
       #flash message

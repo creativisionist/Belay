@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714221951) do
+ActiveRecord::Schema.define(version: 20150714224907) do
 
   create_table "rewards", force: :cascade do |t|
     t.string   "description", limit: 255
     t.string   "image_url",   limit: 255
     t.integer  "amount_cost", limit: 4
     t.integer  "user_id",     limit: 4
-    t.integer  "task_id",     limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "child_id",    limit: 4
@@ -34,7 +33,6 @@ ActiveRecord::Schema.define(version: 20150714221951) do
   create_table "tasks", force: :cascade do |t|
     t.string   "to_do",         limit: 255
     t.integer  "user_id",       limit: 4
-    t.integer  "reward_id",     limit: 4
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "amount_earned", limit: 4
