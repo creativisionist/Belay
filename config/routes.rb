@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :tasks
   patch '/update_status/:id' => 'tasks#update_status'
   resources :rewards
+  patch '/update_reward_status/:id' => 'rewards#update_reward_status'
   # resources :users do
   #   resources :tasks
   #   resources :rewards

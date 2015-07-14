@@ -2,15 +2,28 @@
 
 <% @rewards.each do |reward| %>
   <a href="/rewards/<%= reward.id %>" title="Edit Reward">
-  <div>
-    Description: <%= reward.description %>
-  </div>
+    <div>
+      Description: <%= reward.description %>
+    </div>
 
-  <div>
-    <%= image_tag reward.image_url %>
-  </div>
+    <div>
+      <%= image_tag reward.image_url %>
+    </div>
 
-  <div>
-    Price: <%= reward.amount_cost %>
-  </div>
+    <div>
+      Price: <%= reward.amount_cost %>
+    </div>
+  </a>
+    <% if user_is_child? %>
+      <div>
+        <%= button_to "Purchase!", "/update_reward_status/#{reward.id}", method: :patch, params: { status: "pending"} %>
+      </div>
+    <% else %>
+      <div>
+        <% if reward.status == "pending" %>
+          <%= button_to "Approve", "/update_reward_status/#{reward.id}", method: :patch, params: { status: "bought" } %>
+          <%= button_to "Cancel order", "/update_reward_status/#{reward.id}", method: :patch, params: { status: "not bought"} %>
+        <% end %>
+      </div>
+    <% end %>
 <% end %>

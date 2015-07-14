@@ -5,7 +5,7 @@ class CreateRewards < ActiveRecord::Migration
       t.string :image_url
       t.integer :amount_cost
       t.integer :user_id
-      # t.integer :task_id
+      t.integer :task_id
 
       t.timestamps
     end
