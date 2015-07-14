@@ -4,7 +4,11 @@ class RewardsController < ApplicationController
 
   def index
     @user = User.where(id: params[:user_id])
-    @rewards = Reward.all
+    if user_is_child?
+      @rewards = current_user.child_rewards
+    else
+      @rewards = current_user.rewards
+    end
   end
 
   def show

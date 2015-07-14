@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
   has_many :tasks
   has_many :child_tasks, class_name: 'Task', foreign_key: 'child_id'
   has_many :rewards
+  has_many :child_rewards, class_name: 'Reward', foreign_key: 'child_id'
 end
