@@ -42,6 +42,10 @@ class RewardsController < ApplicationController
     redirect_to "/rewards"
   end
 
+  def update_status
+
+  end
+
   def destroy
     reward_id = params[:id]
     reward = Reward.find_by(id:reward_id)
