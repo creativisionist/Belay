@@ -12,13 +12,13 @@
   </a>
     <% if user_is_child? %>
       <div>
-        <%= button_to "Complete", "/update_status/#{task.id}", method: :patch, params: { status: "Pending" } %>
+        <%= button_to "Complete", "/update_status/#{task.id}", method: :patch, params: { status: "pending" } %>
       </div>
     <% else %>
       <div>
-        <% if task.status == "Pending" %>
+        <% if task.status == "pending" %>
           <%= button_to "Approve", "/update_status/#{task.id}", method: :patch, params: { status: :complete } %>
-          <%= button_to "Not actually complete", "/update_status/#{task.id}", method: :patch, params: { status: "Incomplete" } %>
+          <%= button_to "Not actually complete", "/update_status/#{task.id}", method: :patch, params: { status: "incomplete" } %>
         <% end %>
       </div>
     <% end %>

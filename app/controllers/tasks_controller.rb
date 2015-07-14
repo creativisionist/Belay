@@ -21,7 +21,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(to_do: params[:to_do], reward_id: params[:reward_id], amount_earned: params[:amount_earned], status: "Incomplete", user_id: current_user.id, child_id: params[:child])
+    @task = Task.new(to_do: params[:to_do], reward_id: params[:reward_id], amount_earned: params[:amount_earned], status: "incomplete", user_id: current_user.id, child_id: params[:child])
     #add numericality
     if @task.save
       #flash message
@@ -49,6 +49,12 @@ class TasksController < ApplicationController
     @task = Task.find_by(id: task_id)
     @task.update(status: params[:status])
     #flash message
+    if @task.status == "complete"
+      to_bank = @task.amount_earned
+      current_balance = @task.child.total_balance
+      new_balance = current_balance + to_bank
+      @task.child.update(total_balance: new_balance)
+    end
     redirect_to "/tasks"
   end
 
