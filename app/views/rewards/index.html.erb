@@ -15,9 +15,15 @@
     </div>
   </a>
     <% if user_is_child? %>
+      <% if reward.child.total_balance >= reward.amount_cost %>
       <div>
         <%= button_to "Purchase!", "/update_reward_status/#{reward.id}", method: :patch, params: { status: "pending"} %>
       </div>
+      <% else %>
+      <div>
+        <%= button_to "Purchase!" %>
+      </div>
+      <% end %>
     <% else %>
       <div>
         <% if reward.status == "pending" %>
