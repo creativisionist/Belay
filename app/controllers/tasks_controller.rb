@@ -50,9 +50,9 @@ class TasksController < ApplicationController
     @task.update(status: params[:status])
     #flash message
     if @task.status == "complete"
-      to_bank = @task.amount_earned
+      add_to_bank = @task.amount_earned
       current_balance = @task.child.total_balance
-      new_balance = current_balance + to_bank
+      new_balance = current_balance + add_to_bank
       @task.child.update(total_balance: new_balance)
     end
     redirect_to "/tasks"
