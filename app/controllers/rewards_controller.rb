@@ -47,6 +47,12 @@ class RewardsController < ApplicationController
     @reward = Reward.find_by(id: reward_id)
     @reward.update(status: params[:status])
     #flash message
+    if @reward.status == "bought"
+      deduct_from_bank = @reward.amount_cost
+      current_balance = @reward.child.total_balance
+      new_balance = current_balance - deduct_from_bank
+      @reward.child.update(total_balance: new_balance)
+    end
     redirect_to "/rewards"
   end
 
