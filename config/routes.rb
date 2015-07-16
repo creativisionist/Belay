@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   patch '/update_reward_status/:id' => 'rewards#update_reward_status'
 
   get '/child_dashboard' => 'dashboards#child_dashboard'
+  post '/child_dashboard' => 'dashboards#savings'
+
   get '/parent_dashboard' => 'dashboards#parent_dashboard'
   post '/parent_dashboard' => 'dashboards#update_interest'
 end

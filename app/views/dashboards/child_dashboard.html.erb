@@ -15,9 +15,43 @@
 <% end %>
 
 <h2>Bank Account:</h2>
-<p> Current Balance: <%= @current_balance %> Points </p>
+  <h3> Current Balance To Spend:</h3> 
+    <p> <%= @current_balance %> Points </p>
+
+  <h3> Current Investments:</h3>
+    <p>
+      <% @current_investments.each do |current_investment| %>
+        <div>
+          Money Invested: <%= current_investment.money_invested %>
+          At Interest Rate: <%= current_investment.interest_rate %>
+          How Much You Have Today: <%= current_investment.last_investment_balance %>
+        </div>
+      <% end %>
+    </p>
+
+  <h3> Total Investments:</h3>
+    <p><%= @total_investments %></p>
+
+  <h3> Total Investments + Balance Today: </h3>
+    <p><%= @investments_and_balance %></p>
+  <h3> Current Interest Rate: </h3>
+    <p> <%= @current_interest %> </p>
 
 <h2>Ready to Shop?</h2>
   <div>
     <%= link_to "I'm ready to shop!", "/rewards" %>
   </div>
+
+<h2>Actually, I'm Ready To Invest</h2>
+  <%= form_tag "/child_dashboard", method: :post do %>
+
+  <div>
+    <%= label_tag :money_invested %>
+    <%= text_field_tag :money_invested %>
+  </div>
+
+  <div>
+    <%= submit_tag "Save Away!" %>
+  </div>
+
+<% end %>
