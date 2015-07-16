@@ -44,3 +44,23 @@
       </div>
     </a>
   <% end %>
+
+
+<h3>Set interest rate for your children:</h3>
+
+<%= form_tag "/parent_dashboard", method: :post do %>
+
+  <div>
+    <%= label_tag :interest_rate %>
+    <%= text_field_tag :interest_rate %>
+  </div>
+
+  <div>
+    <%= select_tag :child, options_from_collection_for_select(current_user.children, 'id', 'email') %>
+  </div>
+
+  <div>
+    <%= submit_tag %>
+  </div>
+
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716021241) do
+ActiveRecord::Schema.define(version: 20150716025603) do
 
   create_table "rewards", force: :cascade do |t|
     t.string   "description", limit: 255
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20150716021241) do
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.integer  "total_balance",          limit: 4
+    t.float    "interest_rate",          limit: 24
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

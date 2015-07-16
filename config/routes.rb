@@ -12,4 +12,5 @@ Rails.application.routes.draw do
 
   get '/child_dashboard' => 'dashboards#child_dashboard'
   get '/parent_dashboard' => 'dashboards#parent_dashboard'
+  post '/parent_dashboard' => 'dashboards#update_interest'
 end

@@ -16,4 +16,15 @@ class DashboardsController < ApplicationController
     @tasks_pending = current_user.tasks.where(status: ["pending"])
     @rewards_pending = current_user.rewards.where(status: ["pending"])
   end
+
+  def update_interest
+    parent_id = params[:child]
+    @interest = User.find_by(id: parent_id)
+    @interest.update(interest_rate: params[:interest_rate], parent_id: current_user.id)
+    #call child from user table for interest
+    if @interest.save
+      #flash message
+      redirect_to "/parent_dashboard"
+    end
+  end
 end
