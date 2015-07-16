@@ -1,7 +1,10 @@
 class DashboardsController < ApplicationController
-  def child
+  before_action :authenticate_user!
+  before_action :authenticate_parent!, :except => [:child_dashboard]
+  def child_dashboard
+
   end
 
-  def parent
+  def parent_dashboard
   end
 end

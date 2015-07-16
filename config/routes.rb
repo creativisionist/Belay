@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   resources :rewards
   patch '/update_reward_status/:id' => 'rewards#update_reward_status'
 
-  get '/child_dashboard' => 'dashboards#child'
-  get '/parent_dashboard' => 'dashboards#parent'
+  get '/child_dashboard' => 'dashboards#child_dashboard'
+  get '/parent_dashboard' => 'dashboards#parent_dashboard'
 end
