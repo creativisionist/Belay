@@ -4,7 +4,6 @@ class DashboardsController < ApplicationController
   
   def child_dashboard
     if user_is_child?
-      @user = User.where(id: params[:user_id])
       @tasks = current_user.child_tasks.where(status: "incomplete")
       @current_balance = current_user.total_balance
     else

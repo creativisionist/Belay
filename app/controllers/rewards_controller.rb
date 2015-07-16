@@ -3,7 +3,6 @@ class RewardsController < ApplicationController
   before_action :authenticate_parent!, :except => [:index, :update_reward_status]
 
   def index
-    @user = User.where(id: params[:user_id])
     if user_is_child?
       @rewards = current_user.child_rewards.where(status: "not bought")
     else

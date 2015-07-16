@@ -3,7 +3,6 @@ class TasksController < ApplicationController
   before_action :authenticate_parent!, :except => [:index, :update_status]
 
   def index
-    @user = User.where(id: params[:user_id])
     if user_is_child?
       @tasks = current_user.child_tasks.where(status: "incomplete")
     else
