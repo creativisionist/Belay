@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714224907) do
+ActiveRecord::Schema.define(version: 20150716014723) do
 
   create_table "rewards", force: :cascade do |t|
     t.string   "description", limit: 255
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20150714224907) do
     t.integer  "amount_earned", limit: 4
     t.string   "status",        limit: 255
     t.integer  "child_id",      limit: 4
+  end
+
+  create_table "user_interests", force: :cascade do |t|
+    t.float    "interest_rate",           limit: 24
+    t.float    "money_invested",          limit: 24
+    t.float    "last_investment_balance", limit: 24
+    t.float    "final_balance",           limit: 24
+    t.string   "withdrawl_status",        limit: 255
+    t.integer  "child_id",                limit: 4
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "users", force: :cascade do |t|
