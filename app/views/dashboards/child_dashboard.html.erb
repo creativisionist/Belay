@@ -1,1 +1,23 @@
 <h1>Welcome to your dashboard!</h1>
+
+<h2>Tasks Needing to be Done:</h2>
+
+<% @tasks.each do |task| %>
+  <a href="/tasks/<%= task.id %>" title="Edit Task">
+    <div>
+      Task: <%= task.to_do %>
+    </div>
+    <div>
+      Amount: <%= task.amount_earned %>
+    </div>
+      Status: <%= task.status %>
+  </a>
+<% end %>
+
+<h2>Bank Account:</h2>
+<p> Current Balance: <%= @current_balance %> Points </p>
+
+<h2>Ready to Shop?</h2>
+  <div>
+    <%= link_to "I'm ready to shop!", "/rewards" %>
+  </div>
