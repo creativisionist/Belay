@@ -18,8 +18,14 @@ class DashboardsController < ApplicationController
 
   def savings
     if user_is_child?
-      @savings = UserInterest.new(interest_rate: current_user.interest_rate, money_invested: params[:money_invested], last_investment_balance: params[:money_invested], final_balance: params[:money_invested], withdrawl_status: "accruing", child_id: current_user.id)
-      if @savings.save
+      if params[:money_invested].to_f <= current_user.total_balance
+        @savings = UserInterest.new(interest_rate: current_user.interest_rate, money_invested: params[:money_invested], last_investment_balance: params[:money_invested], final_balance: params[:money_invested], withdrawl_status: "accruing", child_id: current_user.id)
+        if @savings.save
+          #calculate out of total_balance
+          redirect_to "/child_dashboard"
+        end
+      else
+        #flash message
         redirect_to "/child_dashboard"
       end
     else
