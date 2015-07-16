@@ -13,5 +13,8 @@ class DashboardsController < ApplicationController
   end
 
   def parent_dashboard
+    @tasks_todo = current_user.tasks.where(status: ["incomplete"])
+    @tasks_pending = current_user.tasks.where(status: ["pending"])
+    @rewards_pending = current_user.rewards.where(status: ["pending"])
   end
 end
