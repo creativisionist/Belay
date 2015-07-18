@@ -25,17 +25,24 @@
           Money Invested: <%= current_investment.money_invested %>
           At Interest Rate: <%= current_investment.interest_rate %>
           How Much You Have Today: <%= current_investment.last_investment_balance %>
+          <%= @array_of_each_investment %>
         </div>
       <% end %>
     </p>
 
+  <h3> Array of Investments:</h3>
+    <p><%= @array_of_each_investment %></p>
+
   <h3> Total Investments:</h3>
     <p><%= @total_investments %></p>
+
+      <h3> Test:</h3>
+    <p><%= @test %></p>
 
   <h3> Total Investments + Balance Today: </h3>
     <p><%= @investments_and_balance %></p>
   <h3> Current Interest Rate: </h3>
-    <p> <%= @current_interest %> </p>
+    <p> <%= @current_interest %> per day </p>
 
 <h2>Ready to Shop?</h2>
   <div>

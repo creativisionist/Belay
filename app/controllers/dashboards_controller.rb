@@ -1,14 +1,30 @@
 class DashboardsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_parent!, :except => [:child_dashboard, :savings]
-  
+  require 'date'
+
   def child_dashboard
     if user_is_child?
       @tasks = current_user.child_tasks.where(status: "incomplete")
       @current_balance = current_user.total_balance
       @current_investments = current_user.child_user_interests.where(withdrawl_status: "accruing")
-      @total_investments = UserInterest.sum(:last_investment_balance, :conditions => { child_id: current_user.id, withdrawl_status: "accruing"})
-      # @total_investments = @investments.inject(0){:+}
+      @array_of_each_investment = []
+      @total_investments = 0
+      @test
+      @current_investments.each do |investment|
+        created = Date.parse(investment.created_at.to_s)
+        now = Date.today
+        time_passed = now - created
+        r =  investment.interest_rate.to_f
+        p =  investment.money_invested.to_f
+        t =  (time_passed.to_f / 365).to_f
+        a = (p * (1 + (r * t))).to_f
+        @test=t
+        @total_investments += a
+        @array_of_each_investment << a
+      end
+      p @test
+      p @total_investments
       @investments_and_balance = @total_investments + @current_balance
       @current_interest = current_user.interest_rate
     else
