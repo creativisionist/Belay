@@ -8,6 +8,11 @@ class DashboardsController < ApplicationController
       @tasks = current_user.child_tasks.where(status: "incomplete")
       @current_balance = current_user.total_balance
       @current_investments = current_user.child_user_interests.where(withdrawl_status: "accruing")
+
+      # created = Date.parse(investment.created_at.to_s)
+      # now = Date.today
+      # time_passed = now - created
+
       @array_of_each_investment = []
       @total_investments = 0
       @test
@@ -35,7 +40,7 @@ class DashboardsController < ApplicationController
   def savings
     if user_is_child?
       if params[:money_invested].to_f <= current_user.total_balance
-        @savings = UserInterest.new(interest_rate: current_user.interest_rate, money_invested: params[:money_invested], last_investment_balance: params[:money_invested], final_balance: params[:money_invested], withdrawl_status: "accruing", child_id: current_user.id)
+        @savings = UserInterest.new(interest_rate: current_user.interest_rate, money_invested: params[:money_invested], last_investment_balance: params[:money_invested], final_balance: params[:money_invested], withdrawl_status: "accruing", child_id: current_user.id, duration: params[:duration])
         if @savings.save
           subtract_from_bank = @savings.money_invested
           current_balance = current_user.total_balance

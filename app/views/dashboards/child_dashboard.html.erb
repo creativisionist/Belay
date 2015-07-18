@@ -22,10 +22,13 @@
     <p>
       <% @current_investments.each do |current_investment| %>
         <div>
-          Money Invested: <%= current_investment.money_invested %>
-          At Interest Rate: <%= current_investment.interest_rate %>
-          How Much You Have Today: <%= current_investment.last_investment_balance %>
-          <%= @array_of_each_investment %>
+          <li>
+            Money Invested: <%= current_investment.money_invested %>
+            At Interest Rate: <%= current_investment.interest_rate %>
+            Created At: <%= current_investment.created_at %>
+            <!-- Set Aside For:  __ more days -->
+            How Much You Have Today: <%= current_investment.last_investment_balance %> 
+          </li>
         </div>
       <% end %>
     </p>
@@ -55,6 +58,10 @@
   <div>
     <%= label_tag :money_invested %>
     <%= text_field_tag :money_invested %>
+  </div>
+
+  <div>
+    Days To Save: <%= select_tag :duration, options_for_select(["30", "90", "180", "360"]) %>
   </div>
 
   <div>
