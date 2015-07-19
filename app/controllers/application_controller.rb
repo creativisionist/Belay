@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   def authenticate_parent!
     if current_user
       if current_user.role.title == "child"
-        redirect_to "/tasks"
+        redirect_to "/child_dashboard"
       end
     end
   end
