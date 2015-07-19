@@ -19,22 +19,31 @@
     <p> <%= @current_balance %> Points </p>
 
   <h3> Current Investments:</h3>
-    <p>
-      <% @current_investments.each do |current_investment| %>
-        <div>
-          <li>
-            Money Invested: <%= current_investment.money_invested %>
-            At Interest Rate: <%= current_investment.interest_rate %>
-            Created At: <%= current_investment.created_at %>
-            <!-- Set Aside For:  __ more days -->
-            How Much You Have Today: <%= current_investment.last_investment_balance %> 
-          </li>
-        </div>
+    <h5>
+      <% @array_of_each_investment.each do |each_investment| %>
+          <ol>
+            <div>
+              Created: <%= each_investment [0]%>
+            </div>
+            <div>
+              Duration Invested: <%= each_investment [5]%> days
+            </div>
+              Days Remaining: <%= each_investment[6] %>
+            <div>
+              Days Passed: <%= each_investment[1] %>
+            </div>
+            <div>
+              Rate: <%=each_investment [2]%>
+            </div>
+            <div>
+              Amount Originally Invested: <%=each_investment [3]%>
+            </div>
+            <div>
+              Amount You Have Today: <%=each_investment [4]%>
+            </div>
+          </ol>
       <% end %>
-    </p>
-
-  <h3> Array of Investments:</h3>
-    <p><%= @array_of_each_investment %></p>
+    </h5>
 
   <h3> Total Investments:</h3>
     <p><%= @total_investments %></p>
