@@ -17,7 +17,7 @@
 <h2>Tasks Needing Approval:</h2>
 
 <% @tasks_pending.each do |task| %>
-  <a href="/tasks/<%= task.id %>" title="Edit Task">
+  <a href="/tasks" title="Approve Tasks">
     <div>
       Task: <%= task.to_do %>
     </div>
@@ -30,7 +30,7 @@
 
 <h2>Rewards Needing Approval:</h2>
   <% @rewards_pending.each do |reward| %>
-    <a href="/rewards/<%= reward.id %>" title="Edit Reward">
+    <a href="/rewards" title="Approve Rewards">
       <div>
         Description: <%= reward.description %>
       </div>
