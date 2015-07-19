@@ -13,12 +13,14 @@ class DashboardsController < ApplicationController
       @array_of_pasts = []
       @array_of_dates = []
       @total_investments = 0
-      @test
+      @test = []
       @current_investments.each do |investment|
         created = Date.parse(investment.created_at.to_s)
         @array_of_dates.push(created)
         duration = investment.duration.to_i
-        now = Date.today
+        now = Date.current
+        @test.push(created)
+        @test.push(now)
         time_passed = now - created
         if time_passed > duration
           time_passed = duration
@@ -29,13 +31,13 @@ class DashboardsController < ApplicationController
         @array_of_pasts.push(time_passed.to_i)
         time_remaining = duration - time_passed
         @array_of_remains.push(time_remaining.to_i)
-        r =  investment.interest_rate.to_f
-        p =  investment.money_invested.to_f
-        t =  (time_passed.to_f / 360).to_f
-        a = (p * (1 + (r * t))).to_f
+        r =  investment.interest_rate
+        p =  investment.money_invested
+        t =  (time_passed / 360)
+        a = (p * (1 + (r * t)))
         investment.update(last_investment_balance: a)
         # Uncomment to fix final balance values in database
-        # total = (p * (1 + (r * duration/365))).to_f
+        # total = (p * (1 + (r * duration/365)))
         # investment.update(final_balance: total)
         @total_investments += a
       end
@@ -50,13 +52,13 @@ class DashboardsController < ApplicationController
 
   def savings
     if user_is_child?
-      if params[:money_invested].to_f <= current_user.total_balance
+      if params[:money_invested] <= current_user.total_balance
         @savings = UserInterest.new(interest_rate: current_user.interest_rate, money_invested: params[:money_invested], last_investment_balance: params[:money_invested], final_balance: params[:money_invested], withdrawl_status: "accruing", child_id: current_user.id, duration: params[:duration])
         if @savings.save
           subtract_from_bank = @savings.money_invested
           current_balance = current_user.total_balance
           new_balance = current_balance - subtract_from_bank
-          total = (@savings.money_invested * (1 + (@savings.interest_rate * @savings.duration/360))).to_f
+          total = (@savings.money_invested * (1 + (@savings.interest_rate * @savings.duration/360)))
           @savings.update(final_balance: total)
           @current_user.update(total_balance: new_balance)
           redirect_to "/child_dashboard"
