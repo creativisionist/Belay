@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
-  root to: "home#index"
   devise_for :users, :controllers => { registrations: 'users/registrations'}
+
+  devise_scope :user do
+   authenticated :user do
+     root 'homes#index', as: :authenticated_root
+   end
+
+   unauthenticated do
+     root 'devise/sessions#new', as: :unauthenticated_root
+   end
+ end
+
   namespace :users do
     resources :children
   end
