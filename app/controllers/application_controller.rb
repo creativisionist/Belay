@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
   #   end
   # end
 
+  def after_sign_in_path_for(resource)
+    if user_is_child?
+      "/child_dashboard"
+    else
+      "/parent_dashboard"
+    end
+  end
+
   def user_is_child?
     current_user.parent_id
   end

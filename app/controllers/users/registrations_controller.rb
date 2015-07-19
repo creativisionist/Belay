@@ -9,7 +9,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @parent.save
       redirect_to new_users_child_path(:parent_id => @parent.id), :notice => 'New Parent has been added'
     else
-      render :action => 'new'
+      super
+      # render :action => 'new'
     end
   end
 
