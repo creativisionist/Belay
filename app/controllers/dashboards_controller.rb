@@ -34,7 +34,7 @@ class DashboardsController < ApplicationController
         r =  investment.interest_rate
         p =  investment.money_invested
         t =  (time_passed / 360)
-        a = (p * (1 + (r * t)))
+        a = (p * (1 + (r * t))).round(2)
         investment.update(last_investment_balance: a)
         # Uncomment to fix final balance values in database
         # total = (p * (1 + (r * duration/365)))
