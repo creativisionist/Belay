@@ -26,4 +26,11 @@ Rails.application.routes.draw do
 
   get '/parent_dashboard' => 'dashboards#parent_dashboard'
   post '/parent_dashboard' => 'dashboards#update_interest'
+
+  namespace :api do
+    namespace :v1 do
+      get '/children' => 'children#index'
+    end
+  end
+
 end
