@@ -70,38 +70,6 @@
 </h5>
 
     <h5>
-    <% @i=0 %>
-      <% @current_investments.each do |investment| %>
-          <ol>
-            <div>
-              Created: <%= @array_of_dates[@i]%>
-            </div>
-            <div>
-              Duration Invested: <%= investment.duration%> days
-            </div>
-              Days Remaining: <%= @array_of_remains [@i] %>
-            <div>
-              Days Passed: <%= @array_of_pasts [@i] %>
-            </div>
-            <div>
-              Rate: <%=investment.interest_rate%>
-            </div>
-            <div>
-              Amount Originally Invested: <%=investment.money_invested%>
-            </div>
-            <div>
-              Amount You Have Today: <%=investment.last_investment_balance%>
-            </div>
-            <% if investment.withdrawl_status == "complete" %>
-            <%=
-              button_to "Place in Spending Balance", "/child_dashboard/#{investment.id}", method: :patch, params: { withdrawl_status: "paid" } 
-              %>
-              <% end %>
-            <!-- </div> -->
-          </ol>
-          <% @i = @i + 1 %>
-      <% end %>
-    </h5>
 
   <ol>
     <h3> Total Investments:</h3>
