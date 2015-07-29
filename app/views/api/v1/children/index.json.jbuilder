@@ -3,7 +3,9 @@ json.array! @children.each do |child|
   json.parent_id child.parent_id
   json.total_balance child.total_balance
   json.interest_rate child.interest_rate
+
   json.current_investments child.interests_not_paid.each do |investment|
+    json.id investment.id
     json.investment_date investment.investment_date
     json.money_invested investment.money_invested
     json.days_passed investment.days_passed
@@ -11,7 +13,9 @@ json.array! @children.each do |child|
     json.duration investment.duration
     json.interest_rate investment.interest_rate
     json.investment_balance_to_date investment.investment_balance_to_date
+    json.withdrawl_status investment.withdrawl_status
   end
+
   json.incomplete_tasks child.incomplete_tasks
 
   json.all_tasks child.child_tasks.each do |child_task|

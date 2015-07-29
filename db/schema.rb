@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719030557) do
+ActiveRecord::Schema.define(version: 20150729024213) do
 
   create_table "rewards", force: :cascade do |t|
     t.string   "description", limit: 255
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20150719030557) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                                               null: false
     t.datetime "updated_at",                                                               null: false
-    t.integer  "total_balance",          limit: 4
+    t.decimal  "total_balance",                      precision: 10, scale: 2
     t.decimal  "interest_rate",                      precision: 10, scale: 2
   end
 

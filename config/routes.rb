@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get '/children' => 'children#index'
+      patch '/children/:id' => 'children#update'
       get '/parents' => 'parents#index'
     end
   end

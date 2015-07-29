@@ -22,6 +22,12 @@
       });
     };
 
+    $scope.updateStatus=function(investment_id){
+      $http.patch('api/v1/children/' + investment_id + '.json', {
+        withdrawl_status: "paid"
+      });
+    };
+
     window.scope = $scope;
   });
  
