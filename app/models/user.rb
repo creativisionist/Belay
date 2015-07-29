@@ -17,4 +17,12 @@ class User < ActiveRecord::Base
 
   has_many :user_interests
   has_many :child_user_interests, class_name: 'UserInterest', foreign_key: 'child_id'
+
+  def incomplete_tasks
+    child_tasks.where(status: "incomplete")
+  end
+
+  def interests_not_paid
+    child_user_interests.where.not(withdrawl_status: "paid")
+  end
 end

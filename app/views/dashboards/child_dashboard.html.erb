@@ -1,73 +1,84 @@
 <div ng-app="app">
   {{ 1 + 1 }}
 
-<div ng-controller="childrenCtrl" ng-init="setup()">
+<div ng-controller="childrenCtrl" ng-init="setup(<%= current_user.id %>)">
+
 <h1>Welcome to your dashboard!</h1>
 
-<h2>Tasks Needing to be Done:</h2>
-
-<% @tasks.each do |task| %>
-  <a href="/tasks" title="Edit Task">
-    <div>
-      Task: <%= task.to_do %>
-    </div>
-    <div>
-      Amount: <%= task.amount_earned %>
-    </div>
-      Status: <%= task.status %>
-  </a>
-<% end %>
+<h2>Tasks To Complete:</h2>
+  <div>
+    Total #: {{ incomplete_tasks.length }}
+  </div>
+  <div ng-repeat="task in incomplete_tasks">
+    <ol>
+      <a href="/tasks" title="Edit Task">
+        <div>
+          Task: {{ task.to_do }}
+        </div>
+        <div>
+          Amount: {{ task.amount_earned }}
+        </div>
+        <div>
+          Status: {{ task.status }}
+        </div>
+      </a>
+    </ol>
+  </div>
 
 <h2>Bank Account:</h2>
-  <h3> Current Balance To Spend:</h3> 
-    <p> <%= @current_balance %> Points </p>
+  <ol>
+    <div>
+      <h3> Current Balance To Spend:</h3> 
+      {{ total_balance }}  Points
+    </div>
+    <div>
+      <h3> Current Investments:</h3>
+      Total #: {{ current_investments.length }}
+    </div>
+  </ol>
 
-  <h3> Current Investments:</h3>
-    <h5>
-    <% @i=0 %>
-      <% @current_investments.each do |investment| %>
-          <ol>
-            <div>
-              Created: <%= @array_of_dates[@i]%>
-            </div>
-            <div>
-              Duration Invested: <%= investment.duration%> days
-            </div>
-              Days Remaining: <%= @array_of_remains [@i] %>
-            <div>
-              Days Passed: <%= @array_of_pasts [@i] %>
-            </div>
-            <div>
-              Rate: <%=investment.interest_rate%>
-            </div>
-            <div>
-              Amount Originally Invested: <%=investment.money_invested%>
-            </div>
-            <div>
-              Amount You Have Today: <%=investment.last_investment_balance%>
-            </div>
+<h5>
+  <div ng-repeat="investment in current_investments">
+    <ol>
+      <div>
+        Created: {{ investment.investment_date }}
+      </div>
+      <div>
+        Duration Invested: {{ investment.duration }} days
+      </div>
+      <div>
+        Days Remaining: {{ investment.days_remaining }}
+      </div>
+      <div>
+        Days Passed: {{ investment.days_passed }}
+      </div>
+      <div>
+        Rate: {{ investment.interest_rate }}
+      </div>
+      <div>
+        Amount Originally Invested: {{ investment.money_invested }}
+      </div>
+      <div>
+        Amount You Have Today: {{ investment.investment_balance_to_date }}
+      </div>
+    </ol>
+  </div>
+</h5>
             <% if investment.withdrawl_status == "complete" %>
             <%=
               button_to "Place in Spending Balance", "/child_dashboard/#{investment.id}", method: :patch, params: { withdrawl_status: "paid" } 
               %>
-              <% end %>
-            <!-- </div> -->
-          </ol>
-          <% @i = @i + 1 %>
-      <% end %>
-    </h5>
 
-  <h3> Total Investments:</h3>
-    <p><%= @total_investments %></p>
+  <ol>
+    <h3> Total Investments:</h3>
+      {{ total_investments }}
 
-      <h3> Test:</h3>
-    <p><%= @test %></p>
-
-  <h3> Total Investments + Balance Today: </h3>
-    <p><%= @investments_and_balance %></p>
-  <h3> Current Interest Rate: </h3>
-    <p> <%= @current_interest %> per day </p>
-
+    <h3> Total Investments + Balance Today: </h3>
+      {{ investments_and_balance }}
+    
+    <h3> Current Interest Rate: </h3>
+      {{ interest_rate }} per day
+  </ol>
 <h2>Ready to Shop?</h2>
   <div>
     <%= link_to "I'm ready to shop!", "/rewards" %>

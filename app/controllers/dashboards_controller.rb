@@ -19,8 +19,8 @@ class DashboardsController < ApplicationController
         @array_of_dates.push(created)
         duration = investment.duration.to_f
         now = Date.current
-        @test.push(created)
-        @test.push(now)
+        # @test.push(created)
+        # @test.push(now)
         time_passed = now - created
         if time_passed >= duration
           time_passed = duration
@@ -41,8 +41,8 @@ class DashboardsController < ApplicationController
         # investment.update(final_balance: total)
         @total_investments += a
       end
-      p @test
-      p @total_investments
+      # p @test
+      # p @total_investments
       @investments_and_balance = @total_investments + @current_balance
       @current_interest = current_user.interest_rate
     else
