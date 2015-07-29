@@ -16,7 +16,7 @@
           for (var j = 0; j < $scope.current_child.current_investments.length; j++) {
             $scope.total_investments += parseFloat($scope.current_child.current_investments[j].investment_balance_to_date);
             }
-            $scope.investments_and_balance = $scope.total_investments + $scope.total_balance;
+            $scope.investments_and_balance = $scope.total_investments + parseFloat($scope.total_balance);
           }
         }
       });
