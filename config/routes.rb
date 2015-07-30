@@ -32,7 +32,9 @@ Rails.application.routes.draw do
       get '/children' => 'children#index'
       patch '/children/:id' => 'children#update'
       post '/children' => 'children#create'
+
       get '/parents' => 'parents#index'
+      post '/parents' => 'parents#create'
     end
   end
 end
