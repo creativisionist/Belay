@@ -1,5 +1,6 @@
 json.array! @parents.each do |parent|
   json.id parent.id
+  json.children parent.children
   json.childrens_incomplete_tasks parent.childrens_incomplete_tasks
   json.tasks_needing_approval parent.tasks_needing_approval
 
