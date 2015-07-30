@@ -3,22 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
   helper_method :user_is_child?
-  
+
   private
-
-  # def authenticate_user!
-  #   unless user_signed_in?
-  #     redirect_to "/users/sign_in"
-  #   end
-  # end
-
-  # def after_sign_in_path_for(resource)
-  #   if user_is_child?
-  #     "/child_dashboard"
-  #   else
-  #     "/parent_dashboard"
-  #   end
-  # end
 
   def user_is_child?
     current_user.parent_id

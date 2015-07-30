@@ -24,4 +24,21 @@ class Api::V1::ChildrenController < ApplicationController
 
     head :no_content
   end
+
+  def create
+    user = User.find(params[:child_id])
+    if params[:money_invested].to_f <= user.total_balance
+      @savings = UserInterest.new(interest_rate: user.interest_rate, money_invested: params[:money_invested], last_investment_balance: params[:money_invested], final_balance: params[:money_invested], withdrawl_status: "accruing", child_id: user.id, duration: params[:duration])
+      if @savings.save
+        subtract_from_bank = @savings.money_invested
+        current_balance = user.total_balance
+        new_balance = current_balance - subtract_from_bank
+        total = (@savings.money_invested * (1 + (@savings.interest_rate * @savings.duration/360)))
+        @savings.update(final_balance: total)
+        user.update(total_balance: new_balance)
+      end
+    end
+
+    redirect_to "/api/v1/children.json"
+  end
 end
