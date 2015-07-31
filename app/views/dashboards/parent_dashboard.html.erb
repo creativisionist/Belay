@@ -5,7 +5,7 @@
     <h1>Welcome to your dashboard, {{ first_name }} </h1>
 
       <div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-        <%= link_to "Add a Task", "/tasks/new" %>
+        <h5>Add a Task</h5>
         <span ng-show="hoverTask">
           <div>
             Task: <input ng-model="toDo" placeholder="e.g.: Clean your room">
@@ -16,8 +16,8 @@
         </span>
       </div>
       <div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-        <%= link_to "Add a Reward", "/rewards/new" %>
-<!--         <span ng-show="hoverTask"> -->
+        <h5>Add a Reward</h5>
+        <span ng-show="hoverTask">
           <div>
             Reward: <input ng-model="rewardDescription" placeholder="e.g.: Late curfew">
             Points You Want It to Cost:<input ng-model="amountCost" placeholder="e.g.: 800">
@@ -25,7 +25,7 @@
             <select ng-model="myChild" ng-options="child.first_name for child in children"></select>
             <button ng-click="addReward(rewardDescription, amountCost, image, myChild)">Save</button>
           </div>
-<!--         </span> -->
+        </span>
       </div>
 
       <div ng-repeat="child in children" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
