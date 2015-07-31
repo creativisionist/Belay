@@ -9,17 +9,17 @@
           <h3>{{ child.first_name }}'s To Do List</h3>
         </div>
         <span ng-show="hoverTask">
-        <table>
-          <tr>
-            <th ng-click="toggleOrder('to_do')">Task</th>
-            <th ng-click="toggleOrder('amount_earned')">Amount</th>
-          </tr>
-          <tr ng-repeat="task in child.incomplete_tasks | orderBy:orderAttribute:descending">
-              <td>{{ task.to_do }}</td>
-              <td>{{ task.amount_earned }}</td>
-          </tr>
+          <table>
+            <tr>
+              <th ng-click="toggleOrder('to_do')">Task</th>
+              <th ng-click="toggleOrder('amount_earned')">Amount</th>
+            </tr>
+            <tr ng-repeat="task in child.incomplete_tasks | orderBy:orderAttribute:descending">
+                <td>{{ task.to_do }}</td>
+                <td>{{ task.amount_earned }}</td>
+            </tr>
+          </table>
         </span>
-        </table>
       </div>
         
 
