@@ -40,7 +40,7 @@
       }).success(function(response){
         for(var i = 0; i < $scope.incomplete_tasks.length; i++){
           if(task_id === $scope.incomplete_tasks[i].id){
-            $scope.incomplete_tasks.splice(i, 1);
+            self.location.reload($scope.incomplete_tasks);
           }
         }
       }).error(function(response){

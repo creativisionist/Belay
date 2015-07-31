@@ -37,7 +37,7 @@
       }).success(function(response){
         for(var i = 0; i < $scope.tasks_needing_approval.length; i++){
           if(task_id === $scope.tasks_needing_approval[i].id){
-            $scope.tasks_needing_approval.splice(i, 1);
+            self.location.reload($scope.tasks_needing_approval);
           }
         }
       }).error(function(response){
@@ -51,7 +51,7 @@
       }).success(function(response){
         for(var i = 0; i < $scope.tasks_needing_approval.length; i++){
           if(task_id === $scope.tasks_needing_approval[i].id){
-            $scope.tasks_needing_approval.splice(i, 1);
+            self.location.reload($scope.tasks_needing_approval);
           }
         }
       }).error(function(response){
@@ -66,7 +66,7 @@
         for(var i = 0; i < $scope.rewards_needing_approval.length; i++){
           console.log("asdf");
           if(reward_id === $scope.rewards_needing_approval[i].id){
-            $scope.rewards_needing_approval.splice(i, 1);
+            self.location.reload($scope.rewards_needing_approval);
           }
         }
       }).error(function(response){
@@ -81,7 +81,7 @@
         for(var i = 0; i < $scope.rewards_needing_approval.length; i++){
           console.log("asdf");
           if(reward_id === $scope.rewards_needing_approval[i].id){
-            $scope.rewards_needing_approval.splice(i, 1);
+            self.location.reload($scope.rewards_needing_approval);
           }
         }
       }).error(function(response){
