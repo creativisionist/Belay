@@ -28,6 +28,11 @@
         }
     };
 
+    $scope.toggleOrder = function(attribute) {
+      $scope.orderAttribute = attribute;
+      $scope.descending = !$scope.descending;
+    };
+
     $scope.updateTaskStatus=function(task_id){
       $http.patch('api/v1/children/update_task/' + task_id + '.json', {
         status: "pending",

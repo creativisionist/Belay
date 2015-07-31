@@ -36,37 +36,29 @@
     </div>
   </ol>
 
-<h5>
-  <div ng-repeat="investment in current_investments">
-    <ol>
-      <div>
-        Created: {{ investment.investment_date }}
-      </div>
-      <div>
-        Duration Invested: {{ investment.duration }} days
-      </div>
-      <div>
-        Days Remaining: {{ investment.days_remaining }}
-      </div>
-      <div>
-        Days Passed: {{ investment.days_passed }}
-      </div>
-      <div>
-        Rate: {{ investment.interest_rate }}
-      </div>
-      <div>
-        Amount Originally Invested: {{ investment.money_invested }}
-      </div>
-      <div>
-        Amount You Have Today: {{ investment.investment_balance_to_date }}
-      </div>
-      <div ng-if="investment.withdrawl_status === 'complete'">
-        <button ng-click="updateStatus(investment.id)">Place in Spending Balance
-        </button>
-      </div>
-    </ol>
-  </div>
-</h5>
+<table>
+  <tr>
+    <th ng-click="toggleOrder('investment_date')">Created</th>  
+    <th ng-click="toggleOrder('duration')">Duration Invested</th>
+    <th ng-click="toggleOrder('days_remaining')">Days Remaining</th>
+    <th ng-click="toggleOrder('days_passed')">Days Passed</th>
+    <th ng-click="toggleOrder('interest_rate')">Interest Rate</th>
+    <th ng-click="toggleOrder('money_invested')">Amount Invested</th>
+    <th ng-click="toggleOrder('investment_balance_to_date')">How Much You Have Today</th>
+  </tr>
+  <tr ng-repeat="investment in current_investments | orderBy:orderAttribute:descending">
+    <td>{{ investment.investment_date }}</td>
+    <td>{{ investment.duration }}</td>
+    <td>{{ investment.days_remaining }}</td>
+    <td>{{ investment.days_passed }} </td>
+    <td>{{ investment.interest_rate }}</td>
+    <td>{{ investment.money_invested }}</td>
+    <td>{{ investment.investment_balance_to_date }}</td>
+    <td ng-if="investment.withdrawl_status === 'complete'">
+    <button ng-click="updateStatus(investment.id)">Place in Spending Balance
+    </button></td>
+  </tr>
+</table>
 
 <h5>
   <ol>
