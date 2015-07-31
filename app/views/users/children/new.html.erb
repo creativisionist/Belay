@@ -2,7 +2,11 @@
 
 <%= form_for @user, :url => "/users/children?parent_id=#{params[:parent_id]}" do |f| %>
 
-
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true %>
+  </div>
+  
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
