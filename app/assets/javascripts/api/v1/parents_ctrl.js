@@ -23,6 +23,14 @@
         }
       };
 
+      $scope.hoverIn=function() {
+        this.hoverTask = true;
+      };
+
+      $scope.hoverOut=function() {
+        this.hoverTask = false;
+      };
+
     $scope.approveTask=function(task_id){
       $http.patch('api/v1/parents/update_task/' + task_id + '.json', {
         status: "complete"

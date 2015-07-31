@@ -5,24 +5,27 @@
     <h1>Welcome to your dashboard, parent!</h1>
 
     <h2>Tasks Needing to be Done:</h2>
-      <div ng-repeat="child in children">
+      <div ng-repeat="child in children" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
         <div>
           Child's Email: {{ child.email }}
         </div>
           <div ng-repeat="task in child.incomplete_tasks">
-            <ol>
-              <div>
-                Task: {{ task.to_do }}
-              </div>
-              <div>
-                Amount: {{ task.amount_earned }}
-              </div>
-              <div>
-                Status: {{ task.status }}
-              </div>
-            </ol>
+            <span ng-show="hoverTask">
+              <ol>
+                <div>
+                  Task: {{ task.to_do }}
+                </div>
+                <div>
+                  Amount: {{ task.amount_earned }}
+                </div>
+                <div>
+                  Status: {{ task.status }}
+                </div>
+              </ol>
+            </span>
           </div>
-      </div>
+        </div>
+        
 
     <h2>Tasks Needing Approval:</h2>
       <div ng-repeat="child in children">
