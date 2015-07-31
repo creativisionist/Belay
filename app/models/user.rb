@@ -22,6 +22,14 @@ class User < ActiveRecord::Base
     child_tasks.where(status: "incomplete")
   end
 
+  def child_tasks_needing_approval
+    child_tasks.where(status: "pending")
+  end
+
+  def child_rewards_needing_approval
+    child_rewards.where(status: "pending")
+  end
+
   def interests_not_paid
     child_user_interests.where.not(withdrawl_status: "paid")
   end

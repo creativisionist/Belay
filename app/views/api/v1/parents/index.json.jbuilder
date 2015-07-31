@@ -1,8 +1,18 @@
 json.array! @parents.each do |parent|
   json.id parent.id
-  json.children parent.children
-  json.childrens_incomplete_tasks parent.childrens_incomplete_tasks
-  json.tasks_needing_approval parent.tasks_needing_approval
+
+  json.children parent.children.each do |child|
+    json.id child.id
+    json.email child.email
+    json.total_balance child.total_balance
+    json.interest_rate child.interest_rate
+    json.incomplete_tasks child.incomplete_tasks
+    json.tasks_needing_approval child.child_tasks_needing_approval
+    json.rewards_needing_approval child.child_rewards_needing_approval
+  end
+
+  json.all_childrens_incomplete_tasks parent.childrens_incomplete_tasks
+  json.all_childrens_tasks_needing_approval parent.tasks_needing_approval
 
   json.all_tasks parent.tasks.each do |task|
     json.id task.id
@@ -13,7 +23,7 @@ json.array! @parents.each do |parent|
     json.status task.status
   end
 
-  json.rewards_needing_approval parent.rewards_needing_approval
+  json.all_rewards_needing_approval parent.rewards_needing_approval
 
   json.all_rewards parent.rewards.each do |reward|
     json.id reward.id

@@ -34,7 +34,7 @@ Rails.application.routes.draw do
       post '/children' => 'children#create'
 
       get '/parents' => 'parents#index'
-      post '/parents' => 'parents#create'
+      patch '/interest_rate' => 'parents#update_interest_rate'
     end
   end
 end

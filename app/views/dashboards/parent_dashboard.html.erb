@@ -1,70 +1,63 @@
 <div ng-app="app">
   {{ 1 + 1 }}
+
+  <div ng-controller="parentsCtrl" ng-init="setup(<%= current_user.id %>)">
+
+    <h1>Welcome to your dashboard, parent!</h1>
+
+    <h2>Tasks Needing to be Done:</h2>
+      <div ng-repeat="task in childrens_incomplete_tasks">
+        <a href="/tasks" title="Edit Task">
+          <div>
+            Task: {{ task.to_do }}
+          </div>
+          <div>
+            Amount: {{ task.amount_earned }}
+          </div>
+          <div>
+            Status: {{ task.status }}
+          </div>
+        </a>
+      </div>
+
+    <h2>Tasks Needing Approval:</h2>
+      <div ng-repeat="task in tasks_needing_approval">
+        <a href="/tasks" title="Approve Tasks">
+          <div>
+            Task: {{ task.to_do }}
+          </div>
+          <div>
+            Amount: {{ task.amount_earned }}
+          </div>
+          <div>
+            Status: {{ task.status }}
+          </div>
+        </a>
+      </div>
+
+    <h2>Rewards Needing Approval:</h2>
+      <div ng-repeat="reward in rewards_needing_approval">
+        <a href="/rewards" title="Approve Rewards">
+          <div>
+            Description: {{ reward.description }}
+          </div>
+          <div>
+            {{ reward.image_url }}
+          </div>
+          <div>
+            Price: {{ reward.amount_cost }}
+          </div>
+        </a>
+      </div>
+
+
+    <h3>Set interest rate per day for your children's investments:</h3>
+
+
+    Set Interest Rate: <input ng-model="interestRate">
+    
+
+    <select ng-model="myChild" ng-options="child.email for child in children"></select>
+    <button ng-click="addInterestRate(interestRate, myChild)">Save</button>
+  </div>
 </div>
-
-<h1>Welcome to your dashboard, parent!</h1>
-
-<h2>Tasks Needing to be Done:</h2>
-
-  <% @tasks_todo.each do |task| %>
-    <a href="/tasks/<%= task.id %>" title="Edit Task">
-      <div>
-        Task: <%= task.to_do %>
-      </div>
-      <div>
-        Amount: <%= task.amount_earned %>
-      </div>
-        Status: <%= task.status %>
-    </a>
-  <% end %>
-
-<h2>Tasks Needing Approval:</h2>
-
-<% @tasks_pending.each do |task| %>
-  <a href="/tasks" title="Approve Tasks">
-    <div>
-      Task: <%= task.to_do %>
-    </div>
-    <div>
-      Amount: <%= task.amount_earned %>
-    </div>
-      Status: <%= task.status %>
-  </a>
-<% end %>
-
-<h2>Rewards Needing Approval:</h2>
-  <% @rewards_pending.each do |reward| %>
-    <a href="/rewards" title="Approve Rewards">
-      <div>
-        Description: <%= reward.description %>
-      </div>
-
-      <div>
-        <%= image_tag reward.image_url %>
-      </div>
-
-      <div>
-        Price: <%= reward.amount_cost %>
-      </div>
-    </a>
-  <% end %>
-
-
-<h3>Set interest rate per day for your children's investments:</h3>
-
-<%= form_tag "/parent_dashboard", method: :post do %>
-
-  <div>
-    <%= label_tag :interest_rate %>
-    <%= text_field_tag :interest_rate %>
-  </div>
-
-  <div>
-    <%= select_tag :child, options_from_collection_for_select(current_user.children, 'id', 'email') %>
-  </div>
-
-  <div>
-    <%= submit_tag %>
-  </div>
-
-<% end %>
