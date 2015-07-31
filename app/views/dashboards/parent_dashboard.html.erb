@@ -10,21 +10,19 @@
         <div>
           Child's Email: {{ child.email }}
         </div>
-          <a href="/tasks" title="Edit Task">
-            <div ng-repeat="task in child.incomplete_tasks">
-              <ol>
-                <div>
-                  Task: {{ task.to_do }}
-                </div>
-                <div>
-                  Amount: {{ task.amount_earned }}
-                </div>
-                <div>
-                  Status: {{ task.status }}
-                </div>
-              </ol>
-            </div>
-          </a>
+          <div ng-repeat="task in child.incomplete_tasks">
+            <ol>
+              <div>
+                Task: {{ task.to_do }}
+              </div>
+              <div>
+                Amount: {{ task.amount_earned }}
+              </div>
+              <div>
+                Status: {{ task.status }}
+              </div>
+            </ol>
+          </div>
       </div>
 
     <h2>Tasks Needing Approval:</h2>
