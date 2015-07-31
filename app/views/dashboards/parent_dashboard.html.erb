@@ -82,8 +82,8 @@
         </ol>
       </div>
 
-    Set Interest Rate: <input ng-model="interestRate">
-    <select ng-model="myChild" ng-options="child.email for child in children"></select>
+    Set Interest Rate: <input ng-model="interestRate" placeholder="e.g.: 10% = .10">
+    <select ng-model="myChild" ng-options="child.first_name for child in children"></select>
     <button ng-click="addInterestRate(interestRate, myChild)">Save</button>
   </div>
 </div>
