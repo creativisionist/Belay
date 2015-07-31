@@ -8,21 +8,18 @@
   <div>
     Total #: {{ incomplete_tasks.length }}
   </div>
-  <div ng-repeat="task in incomplete_tasks">
-    <ol>
-      <div>
-        Task: {{ task.to_do }}
-      </div>
-      <div>
-        Amount: {{ task.amount_earned }}
-      </div>
-      <div>
-        Status: {{ task.status }}
-      </div>
-      <button ng-click="updateTaskStatus(task.id)">Complete
-      </button>
-    </ol>
-  </div>
+  <table>
+    <tr>
+      <th ng-click="toggleOrder('to_do')">Task</th>
+      <th ng-click="toggleOrder('amount_earned')">Amount</th>
+    </tr>
+    <tr ng-repeat="task in incomplete_tasks | orderBy:orderAttribute:descending">
+      <td>{{ task.to_do }}</td>
+      <td>{{ task.amount_earned }}</td>
+      <td><button ng-click="updateTaskStatus(task.id)">Complete
+      </button></td>
+    </tr>
+  </table>
 
 <h2>Bank Account:</h2>
   <ol>
