@@ -6,57 +6,74 @@
     <h1>Welcome to your dashboard, parent!</h1>
 
     <h2>Tasks Needing to be Done:</h2>
-      <div ng-repeat="task in childrens_incomplete_tasks">
-        <a href="/tasks" title="Edit Task">
-          <div>
-            Task: {{ task.to_do }}
-          </div>
-          <div>
-            Amount: {{ task.amount_earned }}
-          </div>
-          <div>
-            Status: {{ task.status }}
-          </div>
-        </a>
+      <div ng-repeat="child in children">
+        <div>
+          Child's Email: {{ child.email }}
+        </div>
+          <a href="/tasks" title="Edit Task">
+            <div ng-repeat="task in child.incomplete_tasks">
+              <ol>
+                <div>
+                  Task: {{ task.to_do }}
+                </div>
+                <div>
+                  Amount: {{ task.amount_earned }}
+                </div>
+                <div>
+                  Status: {{ task.status }}
+                </div>
+              </ol>
+            </div>
+          </a>
       </div>
 
     <h2>Tasks Needing Approval:</h2>
-      <div ng-repeat="task in tasks_needing_approval">
-        <a href="/tasks" title="Approve Tasks">
-          <div>
-            Task: {{ task.to_do }}
-          </div>
-          <div>
-            Amount: {{ task.amount_earned }}
-          </div>
-          <div>
-            Status: {{ task.status }}
-          </div>
-        </a>
+      <div ng-repeat="child in children">
+        <div>
+          Child's Email: {{ child.email }}
+        </div>
+        <div ng-repeat="task in child.tasks_needing_approval">
+          <a href="/tasks" title="Approve Tasks">
+            <ol>
+              <div>
+                Task: {{ task.to_do }}
+              </div>
+              <div>
+                Amount: {{ task.amount_earned }}
+              </div>
+              <div>
+                Status: {{ task.status }}
+              </div>
+            </ol>
+          </a>
+        </div>
       </div>
 
     <h2>Rewards Needing Approval:</h2>
-      <div ng-repeat="reward in rewards_needing_approval">
-        <a href="/rewards" title="Approve Rewards">
-          <div>
-            Description: {{ reward.description }}
-          </div>
-          <div>
-            {{ reward.image_url }}
-          </div>
-          <div>
-            Price: {{ reward.amount_cost }}
-          </div>
-        </a>
+      <div ng-repeat="child in children">
+        <div>
+          Child's Email: {{ child.email }}
+        </div>
+        <div ng-repeat="reward in child.rewards_needing_approval">
+          <a href="/rewards" title="Approve Rewards">
+            <ol>
+              <div>
+                Description: {{ reward.description }}
+              </div>
+              <div>
+                <img ng-src="{{ reward.image_url }}" width="100">
+              </div>
+              <div>
+                Price: {{ reward.amount_cost }}
+              </div>
+            </ol>
+          </a>
+        </div>
       </div>
 
 
     <h3>Set interest rate per day for your children's investments:</h3>
-
-
     Set Interest Rate: <input ng-model="interestRate">
-    
-
     <select ng-model="myChild" ng-options="child.email for child in children"></select>
     <button ng-click="addInterestRate(interestRate, myChild)">Save</button>
   </div>
