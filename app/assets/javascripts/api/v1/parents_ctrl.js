@@ -23,6 +23,36 @@
         }
       };
 
+    $scope.approveTask=function(task_id){
+      $http.patch('api/v1/parents/update_task/' + task_id + '.json', {
+        status: "complete"
+      }).success(function(response){
+        for(var i = 0; i < $scope.tasks_needing_approval.length; i++){
+          if(task_id === $scope.tasks_needing_approval[i].id){
+            $scope.tasks_needing_approval.splice(i, 1);
+          }
+        }
+      }).error(function(response){
+        alert("ERROR");
+      });
+    };
+
+    $scope.incompleteTask=function(task_id){
+      $http.patch('api/v1/parents/update_task/' + task_id + '.json', {
+        status: "incomplete"
+      }).success(function(response){
+        for(var i = 0; i < $scope.tasks_needing_approval.length; i++){
+          if(task_id === $scope.tasks_needing_approval[i].id){
+            $scope.tasks_needing_approval.splice(i, 1);
+          }
+        }
+      }).error(function(response){
+        alert("ERROR");
+      });
+    };
+
+
+
     $scope.addInterestRate=function(interestRate, child){
       $http.patch('api/v1/interest_rate.json', {child_id: child.id, interest_rate: interestRate});
       $scope.interest_rate = null;

@@ -28,6 +28,22 @@
         }
     };
 
+    $scope.updateTaskStatus=function(task_id){
+      $http.patch('api/v1/children/update_task/' + task_id + '.json', {
+        status: "pending",
+        child_id: $scope.current_user
+      }).success(function(response){
+        for(var i = 0; i < $scope.incomplete_tasks.length; i++){
+          if(task_id === $scope.incomplete_tasks[i].id){
+            $scope.incomplete_tasks.splice(i, 1);
+          }
+        }
+      }).error(function(response){
+        alert("ERROR");
+      });
+    };
+
+
     $scope.updateStatus=function(investment_id){
       $http.patch('api/v1/children/' + investment_id + '.json', {
         withdrawl_status: "paid"

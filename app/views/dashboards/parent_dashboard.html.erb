@@ -33,7 +33,6 @@
           Child's Email: {{ child.email }}
         </div>
         <div ng-repeat="task in child.tasks_needing_approval">
-          <a href="/tasks" title="Approve Tasks">
             <ol>
               <div>
                 Task: {{ task.to_do }}
@@ -44,8 +43,10 @@
               <div>
                 Status: {{ task.status }}
               </div>
+              <button ng-click="approveTask(task.id)">Approve
+              </button>
+              <button ng-click="incompleteTask(task.id)">Not Actually Complete</button>
             </ol>
-          </a>
         </div>
       </div>
 
@@ -73,6 +74,17 @@
 
 
     <h3>Set interest rate per day for your children's investments:</h3>
+      <div ng-repeat="child in children">
+        <ol>
+          <div>
+            Child's Email: {{ child.email }}
+          </div>
+          <div>
+            Current Interest Rate: {{ child.interest_rate }}
+          </div>
+        </ol>
+      </div>
+
     Set Interest Rate: <input ng-model="interestRate">
     <select ng-model="myChild" ng-options="child.email for child in children"></select>
     <button ng-click="addInterestRate(interestRate, myChild)">Save</button>

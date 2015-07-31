@@ -11,17 +11,17 @@
   </div>
   <div ng-repeat="task in incomplete_tasks">
     <ol>
-      <a href="/tasks" title="Edit Task">
-        <div>
-          Task: {{ task.to_do }}
-        </div>
-        <div>
-          Amount: {{ task.amount_earned }}
-        </div>
-        <div>
-          Status: {{ task.status }}
-        </div>
-      </a>
+      <div>
+        Task: {{ task.to_do }}
+      </div>
+      <div>
+        Amount: {{ task.amount_earned }}
+      </div>
+      <div>
+        Status: {{ task.status }}
+      </div>
+      <button ng-click="updateTaskStatus(task.id)">Complete
+      </button>
     </ol>
   </div>
 
@@ -80,7 +80,7 @@
     <h3> Current Interest Rate: </h3>
       {{ interest_rate }} per day
   </ol>
-  
+
 <h2>Ready to Shop?</h2>
   <div>
     <%= link_to "I'm ready to shop!", "/rewards" %>

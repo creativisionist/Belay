@@ -31,9 +31,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/children' => 'children#index'
       patch '/children/:id' => 'children#update'
+      patch '/children/update_task/:id' => 'children#update_task'
       post '/children' => 'children#create'
 
       get '/parents' => 'parents#index'
+      patch '/parents/update_task/:id' => 'parents#update_task'
       patch '/interest_rate' => 'parents#update_interest_rate'
     end
   end

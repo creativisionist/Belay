@@ -7,7 +7,15 @@ class Api::V1::ChildrenController < ApplicationController
           investment.update(withdrawl_status: "complete")
         end
       end
-    end  
+    end
+  end
+
+  def update_task
+    task_id = params[:id]
+    @task = Task.find_by(id: task_id)
+    @task.update(status: params[:status])
+
+    head :no_content
   end
 
   def update
