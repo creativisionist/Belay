@@ -15,6 +15,7 @@
         for (var i = 0; i < $scope.children.length; i++) {
           if ($scope.children[i].id === $scope.current_user) {
             $scope.current_child = $scope.children[i];
+            $scope.first_name = $scope.current_child.first_name;
             $scope.incomplete_tasks = $scope.current_child.incomplete_tasks;
             $scope.total_balance = $scope.current_child.total_balance;
             $scope.current_investments = $scope.current_child.current_investments;
