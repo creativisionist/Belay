@@ -51,6 +51,35 @@
       });
     };
 
+    $scope.approveOrder=function(reward_id){
+      $http.patch('api/v1/parents/update_reward/' + reward_id + '.json', {
+        status: "bought"
+      }).success(function(response){
+        for(var i = 0; i < $scope.rewards_needing_approval.length; i++){
+          console.log("asdf");
+          if(reward_id === $scope.rewards_needing_approval[i].id){
+            $scope.rewards_needing_approval.splice(i, 1);
+          }
+        }
+      }).error(function(response){
+        alert("ERROR");
+      });
+    };
+
+    $scope.cancelOrder=function(reward_id){
+      $http.patch('api/v1/parents/update_reward/' + reward_id + '.json', {
+        status: "not bought"
+      }).success(function(response){
+        for(var i = 0; i < $scope.rewards_needing_approval.length; i++){
+          console.log("asdf");
+          if(reward_id === $scope.rewards_needing_approval[i].id){
+            $scope.rewards_needing_approval.splice(i, 1);
+          }
+        }
+      }).error(function(response){
+        alert("ERROR");
+      });
+    };
 
 
     $scope.addInterestRate=function(interestRate, child){

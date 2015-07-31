@@ -54,19 +54,19 @@
           Child's Email: {{ child.email }}
         </div>
         <div ng-repeat="reward in child.rewards_needing_approval">
-          <a href="/rewards" title="Approve Rewards">
-            <ol>
-              <div>
-                Description: {{ reward.description }}
-              </div>
-              <div>
-                <img ng-src="{{ reward.image_url }}" width="100">
-              </div>
-              <div>
-                Price: {{ reward.amount_cost }}
-              </div>
-            </ol>
-          </a>
+          <ol>
+            <div>
+              Description: {{ reward.description }}
+            </div>
+            <div>
+              <img ng-src="{{ reward.image_url }}" width="100">
+            </div>
+            <div>
+              Price: {{ reward.amount_cost }}
+            </div>
+            <button ng-click="approveOrder(reward.id)">Approve</button>
+            <button ng-click="cancelOrder(reward.id)">Cancel Order</button>
+          </ol>
         </div>
       </div>
 
