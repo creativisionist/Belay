@@ -24,6 +24,11 @@
         }
       };
 
+      $scope.toggleOrder = function(attribute) {
+      $scope.orderAttribute = attribute;
+      $scope.descending = !$scope.descending;
+      };
+      
       $scope.hoverIn=function() {
         this.hoverTask = true;
       };
