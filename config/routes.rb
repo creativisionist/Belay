@@ -35,6 +35,8 @@ Rails.application.routes.draw do
       post '/children' => 'children#create'
 
       get '/parents' => 'parents#index'
+      post '/task/new' => 'parents#add_task'
+      post '/reward/new' => 'parents#add_reward'
       patch '/parents/update_task/:id' => 'parents#update_task'
       patch '/parents/update_reward/:id' => 'parents#update_reward'
       patch '/interest_rate' => 'parents#update_interest_rate'

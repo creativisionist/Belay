@@ -4,6 +4,30 @@
 
     <h1>Welcome to your dashboard, {{ first_name }} </h1>
 
+      <div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+        <%= link_to "Add a Task", "/tasks/new" %>
+        <span ng-show="hoverTask">
+          <div>
+            Task: <input ng-model="toDo" placeholder="e.g.: Clean your room">
+            Points You Want Them to Earn:<input ng-model="amountEarned" placeholder="e.g.: 500">
+            <select ng-model="myChild" ng-options="child.first_name for child in children"></select>
+            <button ng-click="addTask(toDo, amountEarned, myChild)">Save</button>
+          </div>
+        </span>
+      </div>
+      <div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+        <%= link_to "Add a Reward", "/rewards/new" %>
+<!--         <span ng-show="hoverTask"> -->
+          <div>
+            Reward: <input ng-model="rewardDescription" placeholder="e.g.: Late curfew">
+            Points You Want It to Cost:<input ng-model="amountCost" placeholder="e.g.: 800">
+            Image URL:<input ng-model="image" placeholder="e.g.: http://www.website/image.jpeg">
+            <select ng-model="myChild" ng-options="child.first_name for child in children"></select>
+            <button ng-click="addReward(rewardDescription, amountCost, image, myChild)">Save</button>
+          </div>
+<!--         </span> -->
+      </div>
+
       <div ng-repeat="child in children" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
         <div>
           <h3>{{ child.first_name }}'s To Do List</h3>

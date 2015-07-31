@@ -3,11 +3,33 @@ class Api::V1::ParentsController < ApplicationController
     @parents = User.where(role_id: 1)
   end
 
+  def add_task
+    child = User.find_by(id: params[:child_id])
+    user = User.find_by(params[:user_id])
+    @task = Task.new(to_do: params[:to_do], amount_earned: params[:amount_earned], status: "incomplete", user_id: user.id, child_id: child.id)
+    if @task.save
+      render json: {message: "Successful"}
+    else
+      head :no_content
+    end
+  end
+
   def update_task
     @task = Task.find_by(id: params[:id])
     @task.update(status: params[:status])
 
     head :no_content
+  end
+
+  def add_reward
+    child = User.find_by(id: params[:child_id])
+    user = User.find_by(params[:user_id])
+    @reward = Reward.new(description: params[:description], amount_cost: params[:amount_cost], image_url: params[:image_url], status: "not bought", user_id: user.id, child_id: child.id)
+    if @reward.save
+      render json: {message:"Successful"}
+    else
+      head :no_content
+    end
   end
 
   def update_reward

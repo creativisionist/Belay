@@ -24,18 +24,32 @@
         }
       };
 
-      $scope.toggleOrder = function(attribute) {
+    $scope.toggleOrder = function(attribute) {
       $scope.orderAttribute = attribute;
       $scope.descending = !$scope.descending;
-      };
-      
-      $scope.hoverIn=function() {
-        this.hoverTask = true;
-      };
+    };
 
-      $scope.hoverOut=function() {
+    $scope.hoverIn=function() {
+        this.hoverTask = true;
+        this.hoverReward = true;
+    };
+
+    $scope.hoverOut=function() {
         this.hoverTask = false;
-      };
+        this.hoverReward = false;
+    };
+
+    $scope.addTask=function(toDo, amountEarned, child){
+      $http.post('api/v1/task/new.json', {child_id: child.id, to_do: toDo, amount_earned: amountEarned});
+      $scope.to_do = null;
+    };
+
+    $scope.addReward=function(rewardDescription, amountCost, image, child){
+      $http.post('api/v1/reward/new.json', {child_id: child.id, description: rewardDescription, image_url: image, amount_cost: amountCost});
+      $scope.rewardDescription = null;
+      $scope.amountCost = null;
+      $scope.image = null;
+    };
 
     $scope.approveTask=function(task_id){
       $http.patch('api/v1/parents/update_task/' + task_id + '.json', {
