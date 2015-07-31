@@ -23,49 +23,35 @@
       </div>
         
 
-    <h2>Tasks Needing Approval:</h2>
+    <h2>Check Off Time!</h2>
       <div ng-repeat="child in children">
-        <div>
-          {{ child.first_name }}
-        </div>
-        <div ng-repeat="task in child.tasks_needing_approval">
-            <ol>
-              <div>
-                Task: {{ task.to_do }}
-              </div>
-              <div>
-                Amount: {{ task.amount_earned }}
-              </div>
-              <div>
-                Status: {{ task.status }}
-              </div>
-              <button ng-click="approveTask(task.id)">Approve
-              </button>
-              <button ng-click="incompleteTask(task.id)">Not Actually Complete</button>
-            </ol>
-        </div>
-      </div>
-
-    <h2>Rewards Needing Approval:</h2>
-      <div ng-repeat="child in children">
-        <div>
-          {{ child.first_name }}
-        </div>
-        <div ng-repeat="reward in child.rewards_needing_approval">
-          <ol>
-            <div>
-              Description: {{ reward.description }}
-            </div>
-            <div>
-              <img ng-src="{{ reward.image_url }}" width="100">
-            </div>
-            <div>
-              Price: {{ reward.amount_cost }}
-            </div>
-            <button ng-click="approveOrder(reward.id)">Approve</button>
-            <button ng-click="cancelOrder(reward.id)">Cancel Order</button>
-          </ol>
-        </div>
+        <h3>{{ child.first_name }}'s Stuff</h3>
+        <table>
+          <tr>
+            <th ng-click="toggleOrder('to_do')">Task</th>
+            <th ng-click="toggleOrder('amount_earned')">Amount</th>
+          </tr>
+          <tr ng-repeat="task in child.tasks_needing_approval | orderBy:orderAttribute:descending">
+            <td>{{ task.to_do }}</td>
+            <td>{{ task.amount_earned }}</td>
+            <td><button ng-click="approveTask(task.id)">Approve
+            </button></td>
+            <td><button ng-click="incompleteTask(task.id)">Not Actually Complete</button></td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <th ng-click="toggleOrder('description')">Description</th>
+            <th ng-click="toggleOrder('amount_cost')">Price</th>
+          </tr>
+          <tr ng-repeat="reward in child.rewards_needing_approval | orderBy:orderAttribute:descending">
+            <td>{{ reward.description }}</td>
+            <td>{{ reward.amount_cost }}</td>
+            <td><button ng-click="approveOrder(reward.id)">Approve</button>
+            <button ng-click="cancelOrder(reward.id)">Cancel Order</button></td>
+            <td><img ng-src="{{ reward.image_url }}" width="100"></td>
+          </tr>
+        </table>
       </div>
 
 
