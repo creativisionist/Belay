@@ -17,8 +17,13 @@ class Api::V1::ParentsController < ApplicationController
   def update_task
     @task = Task.find_by(id: params[:id])
     @task.update(status: params[:status])
-
-    head :no_content
+    if @task.status == "complete"
+      add_to_bank = @task.amount_earned
+      current_balance = @task.child.total_balance
+      new_balance = current_balance + add_to_bank
+      @task.child.update(total_balance: new_balance)
+    end
+    render json: @task.to_json
   end
 
   def add_reward
