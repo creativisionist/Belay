@@ -41,22 +41,26 @@
       }).success(function(response){
         for(var i = 0; i < $scope.incomplete_tasks.length; i++){
           if(task_id === $scope.incomplete_tasks[i].id){
-            self.location.reload($scope.incomplete_tasks);
+            $scope.incomplete_tasks.splice(i,1);
           }
         }
-      }).error(function(response){
-        alert("ERROR");
       });
     };
 
 
-    $scope.updateStatus=function(investment_id){
+    $scope.payOutInvestment=function(investment_id){
       $http.patch('api/v1/children/' + investment_id + '.json', {
         withdrawl_status: "paid"
+      }).success(function(response){
+        // for(var i = 0; i < $scope.current_investments.length; i++){
+        //   if(investment_id === $scope.current_investments[i].id){
+             self.location.reload($scope.current_investments);
+        //   }
+        // }
       });
     };
 
-    $scope.addInvestment=function(money_invested, duration){
+    $scope.addNewInvestment=function(money_invested, duration){
       var investmentAmt = {
         money_invested: money_invested,
         duration: duration,

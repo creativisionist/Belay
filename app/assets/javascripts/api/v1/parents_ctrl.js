@@ -55,13 +55,14 @@
       $http.patch('api/v1/parents/update_task/' + task_id + '.json', {
         status: "complete"
       }).success(function(response){
-        for(var i = 0; i < $scope.tasks_needing_approval.length; i++){
-          if(task_id === $scope.tasks_needing_approval[i].id){
-            self.location.reload($scope.tasks_needing_approval);
+        var task_id = response.id;
+        for(var j=0; j < $scope.children.length; j++){
+          for (var i=0; i < $scope.children[j].tasks_needing_approval.length; i++){
+            if (task_id === $scope.children[j].tasks_needing_approval[i].id) {
+              $scope.children[j].tasks_needing_approval.splice(i,1);
+            }
           }
         }
-      }).error(function(response){
-        alert("ERROR");
       });
     };
 
@@ -69,13 +70,14 @@
       $http.patch('api/v1/parents/update_task/' + task_id + '.json', {
         status: "incomplete"
       }).success(function(response){
-        for(var i = 0; i < $scope.tasks_needing_approval.length; i++){
-          if(task_id === $scope.tasks_needing_approval[i].id){
-            self.location.reload($scope.tasks_needing_approval);
+        var task_id = response.id;
+        for(var j=0; j < $scope.children.length; j++){
+          for (var i=0; i < $scope.children[j].tasks_needing_approval.length; i++){
+            if (task_id === $scope.children[j].tasks_needing_approval[i].id) {
+              $scope.children[j].tasks_needing_approval.splice(i,1);
+            }
           }
         }
-      }).error(function(response){
-        alert("ERROR");
       });
     };
 
@@ -83,14 +85,14 @@
       $http.patch('api/v1/parents/update_reward/' + reward_id + '.json', {
         status: "bought"
       }).success(function(response){
-        for(var i = 0; i < $scope.rewards_needing_approval.length; i++){
-          console.log("asdf");
-          if(reward_id === $scope.rewards_needing_approval[i].id){
-            self.location.reload($scope.rewards_needing_approval);
+        var reward_id = response.id;
+        for(var j=0; j < $scope.children.length; j++){
+          for (var i=0; i < $scope.children[j].rewards_needing_approval.length; i++){
+            if (reward_id === $scope.children[j].rewards_needing_approval[i].id) {
+              $scope.children[j].rewards_needing_approval.splice(i,1);
+            }
           }
         }
-      }).error(function(response){
-        alert("ERROR");
       });
     };
 
@@ -98,14 +100,14 @@
       $http.patch('api/v1/parents/update_reward/' + reward_id + '.json', {
         status: "not bought"
       }).success(function(response){
-        for(var i = 0; i < $scope.rewards_needing_approval.length; i++){
-          console.log("asdf");
-          if(reward_id === $scope.rewards_needing_approval[i].id){
-            self.location.reload($scope.rewards_needing_approval);
+        var reward_id = response.id;
+        for(var j=0; j < $scope.children.length; j++){
+          for (var i=0; i < $scope.children[j].rewards_needing_approval.length; i++){
+            if (reward_id === $scope.children[j].rewards_needing_approval[i].id) {
+              $scope.children[j].rewards_needing_approval.splice(i,1);
+            }
           }
         }
-      }).error(function(response){
-        alert("ERROR");
       });
     };
 

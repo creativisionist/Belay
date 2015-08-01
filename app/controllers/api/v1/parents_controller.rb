@@ -46,7 +46,7 @@ class Api::V1::ParentsController < ApplicationController
       new_balance = current_balance - deduct_from_bank
       @reward.child.update(total_balance: new_balance)
     end
-    head :no_content
+    render json: @reward.to_json
   end
 
   def update_interest_rate

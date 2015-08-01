@@ -15,7 +15,7 @@ class Api::V1::ChildrenController < ApplicationController
     @task = Task.find_by(id: task_id)
     @task.update(status: params[:status])
 
-    head :no_content
+    render json: @task.to_json
   end
 
   def update
@@ -30,7 +30,7 @@ class Api::V1::ChildrenController < ApplicationController
       user.update(total_balance: new_balance)
     end
 
-    head :no_content
+    render json: @investment.to_json
   end
 
   def create

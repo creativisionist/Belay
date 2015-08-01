@@ -53,7 +53,7 @@
     <td>{{ investment.money_invested }}</td>
     <td>{{ investment.investment_balance_to_date }}</td>
     <td ng-if="investment.withdrawl_status === 'complete'">
-    <button ng-click="updateStatus(investment.id)">Place in Spending Balance
+    <button ng-click="payOutInvestment(investment.id)">Place in Spending Balance
     </button></td>
   </tr>
 </table>
@@ -84,6 +84,6 @@
     <option value="360">360</option>
   </select>
 
-<button ng-click="addInvestment(money_invested, duration)">Save Away!</button>
+<button ng-click="addNewInvestment(money_invested, duration)">Save Away!</button>
 
 </div>
