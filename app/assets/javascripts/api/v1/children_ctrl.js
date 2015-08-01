@@ -52,11 +52,7 @@
       $http.patch('api/v1/children/' + investment_id + '.json', {
         withdrawl_status: "paid"
       }).success(function(response){
-        // for(var i = 0; i < $scope.current_investments.length; i++){
-        //   if(investment_id === $scope.current_investments[i].id){
-             self.location.reload($scope.current_investments);
-        //   }
-        // }
+        self.location.reload($scope.current_investments);
       });
     };
 
