@@ -17,6 +17,7 @@
             $scope.current_child = $scope.children[i];
             $scope.first_name = $scope.current_child.first_name;
             $scope.incomplete_tasks = $scope.current_child.incomplete_tasks;
+            $scope.unbought_rewards = $scope.current_child.rewards_not_bought;
             $scope.total_balance = $scope.current_child.total_balance;
             $scope.current_investments = $scope.current_child.current_investments;
             $scope.interest_rate = $scope.current_child.interest_rate;
@@ -47,12 +48,24 @@
       });
     };
 
-
     $scope.payOutInvestment=function(investment_id){
       $http.patch('api/v1/children/' + investment_id + '.json', {
         withdrawl_status: "paid"
       }).success(function(response){
         self.location.reload($scope.current_investments);
+      });
+    };
+
+    $scope.buyReward=function(reward_id){
+      $http.patch('api/v1/children/update_reward/' + reward_id + '.json', {
+        status: "pending",
+        child_id: $scope.current_user
+      }).success(function(response){
+        for(var i=0; i < $scope.unbought_rewards.length; i++){
+          if(reward_id === $scope.unbought_rewards[i].id){
+            $scope.unbought_rewards.splice(i,1);
+          }
+        }
       });
     };
 

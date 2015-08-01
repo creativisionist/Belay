@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
     child_rewards.where(status: "pending")
   end
 
+  def rewards_not_bought
+    child_rewards.where(status: "not bought")
+  end
+
   def interests_not_paid
     child_user_interests.where.not(withdrawl_status: "paid")
   end

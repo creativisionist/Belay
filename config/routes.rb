@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       get '/children' => 'children#index'
       patch '/children/:id' => 'children#update'
       patch '/children/update_task/:id' => 'children#update_task'
+      patch '/children/update_reward/:id' => 'children#update_reward'
       post '/children' => 'children#create'
 
       get '/parents' => 'parents#index'

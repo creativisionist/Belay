@@ -47,4 +47,6 @@ json.array! @children.each do |child|
     json.amount_cost child_reward.amount_cost
     json.status child_reward.status
   end
+
+  json.rewards_not_bought child.rewards_not_bought
 end

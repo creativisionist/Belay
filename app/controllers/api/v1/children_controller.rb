@@ -33,6 +33,14 @@ class Api::V1::ChildrenController < ApplicationController
     render json: @investment.to_json
   end
 
+  def update_reward
+    reward_id = params[:id]
+    @reward = Reward.find_by(id: reward_id)
+    @reward.update(status: params[:status])
+
+    render json: @reward.to_json
+  end
+
   def create
     user = User.find(params[:child_id])
     if params[:money_invested].to_f <= user.total_balance
