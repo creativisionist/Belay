@@ -182,7 +182,12 @@
 
 
     $scope.addInterestRate=function(interestRate, child){
-      $http.patch('api/v1/interest_rate.json', {child_id: child.id, interest_rate: interestRate});
+      var childInterestRate = {
+        child_id: child.id,
+        interest_rate: interestRate
+      };
+      $http.patch('api/v1/interest_rate.json', childInterestRate);
+      child.interest_rate = interestRate;
       $scope.interestRate = null;
       $scope.myChild = null;
     };
