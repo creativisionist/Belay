@@ -32,16 +32,25 @@
         <div>
           <h3>{{ child.first_name }}'s To Do List</h3>
         </div>
-        <span ng-show="hoverTask">
+<!--         <span ng-show="hoverTask"> -->
           <table>
             <tr>
               <th ng-click="toggleOrder('to_do')">Task</th>
               <th ng-click="toggleOrder('amount_earned')">Amount</th>
             </tr>
-            <tr ng-repeat="task in child.incomplete_tasks | orderBy:orderAttribute:descending">
-                <td>{{ task.to_do }}</td>
-                <td>{{ task.amount_earned }}</td>
-            </tr>
+              <tr ng-repeat="task in child.incomplete_tasks | orderBy:orderAttribute:descending">
+                <td ng-hide="task.enableEditor">{{ task.to_do }}</td>
+                <td><input ng-show="task.enableEditor" ng-model="task.to_do"></td>
+                <td ng-hide="task.enableEditor">{{ task.amount_earned }}</td>
+                <td><input ng-show="task.enableEditor" ng-model="task.amount_earned"></td>
+                <td><a href="" ng-click="enableEdit(task)">Edit</a>
+                  <span ng-show="task.enableEditor">
+                    <a href="" ng-click="saveTask(task)">Save</a>
+                    <a href="" ng-click="disableEditor(task)">Cancel</a>
+                    <a href="" ng-click="delete()">Delete</a>
+                  </span>
+                </td>
+              </tr>
           </table>
         </span>
       </div>
@@ -66,15 +75,16 @@
         </table>
         <table>
           <tr>
+            <th></th>
             <th ng-click="toggleOrder('description')">Description</th>
             <th ng-click="toggleOrder('amount_cost')">Price</th>
           </tr>
           <tr ng-repeat="reward in child.rewards_needing_approval | orderBy:orderAttribute:descending">
+            <td><img ng-src="{{ reward.image_url }}" width="100"></td>
             <td>{{ reward.description }}</td>
             <td>{{ reward.amount_cost }}</td>
             <td><button ng-click="approveOrder(reward.id)">Approve</button>
             <button ng-click="cancelOrder(reward.id)">Cancel Order</button></td>
-            <td><img ng-src="{{ reward.image_url }}" width="100"></td>
           </tr>
         </table>
       </div>

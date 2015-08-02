@@ -51,6 +51,34 @@
       $scope.image = null;
     };
 
+    $scope.enableEdit = function(task){
+      task.enableEditor = true;
+      // $scope.editableTask = $scope.childrens_incomplete_tasks;
+    };
+
+    $scope.disableEditor = function(task) {
+      task.enableEditor = false;
+    };
+
+    $scope.saveTask = function(task) {
+      $http.patch('api/v1/parents/edit_task/' + task.id + '.json',{
+
+      });
+      task.enableEditor = false;
+    };
+    
+    $scope.delete = function(task_id) {
+
+    };
+    
+
+    // var task_id = response.id;
+    //     for(var j=0; j < $scope.children.length; j++){
+    //       for (var i=0; i < $scope.children[j].childrens_incomplete_tasks.length; i++){
+    //         if (task_id === $scope.children[j].childrens_incomplete_tasks[i].id) {
+    //         $scope.editableTask = $scope.children[j].childrens_incomplete_tasks;
+      
+
     $scope.approveTask=function(task_id){
       $http.patch('api/v1/parents/update_task/' + task_id + '.json', {
         status: "complete"
@@ -114,7 +142,7 @@
 
     $scope.addInterestRate=function(interestRate, child){
       $http.patch('api/v1/interest_rate.json', {child_id: child.id, interest_rate: interestRate});
-      $scope.interest_rate = null;
+      $scope.interestRate = null;
     };
 
     window.scope = $scope;
