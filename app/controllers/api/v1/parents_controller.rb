@@ -64,6 +64,21 @@ class Api::V1::ParentsController < ApplicationController
     render json: @reward.to_json
   end
 
+  def edit_reward
+    @reward = Reward.find_by(id: params[:id])
+    @reward.update(description: params[:description], amount_cost: params[:amount_cost], image_url: params[:image_url])
+    if @reward.save
+      render json: @reward.to_json
+    end
+  end
+
+  def destroy_reward
+    reward_id = params[:id]
+    reward = Reward.find_by(id:reward_id)
+    reward.destroy
+    render json: { message: "Successful" }
+  end
+
   def update_interest_rate
     @interest = User.find_by(id: params[:child_id])
     @interest.update(interest_rate: params[:interest_rate])

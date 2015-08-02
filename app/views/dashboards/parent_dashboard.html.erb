@@ -17,7 +17,7 @@
       </div>
       <div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
         <h5>Add a Reward</h5>
-        <span ng-show="hoverTask">
+<!--         <span ng-show="hoverTask"> -->
           <div>
             Reward: <input ng-model="rewardDescription" placeholder="e.g.: Late curfew">
             Points You Want It to Cost:<input ng-model="amountCost" placeholder="e.g.: 800">
@@ -55,7 +55,7 @@
         </span>
       </div>
 
-<!--      <div ng-repeat="child in children" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+     <div ng-repeat="child in children" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
         <div>
           <h3>{{ child.first_name }}'s Rewards</h3>
         </div>
@@ -64,6 +64,7 @@
             <tr>
               <th ng-click="toggleOrder('description')">Description</th>
               <th ng-click="toggleOrder('amount_cost')">Price</th>
+              <th ng-click="toggleOrder('image_url')">Image URL</th>
             </tr>
               <tr ng-repeat="reward in child.rewards_not_bought | orderBy:orderAttribute:descending">
                 <td ng-hide="reward.enableEditor">{{ reward.description }}</td>
@@ -71,18 +72,18 @@
                 <td ng-hide="reward.enableEditor">{{ reward.amount_cost }}</td>
                 <td><input ng-show="reward.enableEditor" ng-model="reward.amount_cost"></td>
                 <td ng-hide="reward.enableEditor"> {{ reward.image_url }}</td>
-                <td ng-show="reward.enableEditor" ng-model="reward.image_url"></td>
+                <td><input ng-show="reward.enableEditor" ng-model="reward.image_url"></td>
                 <td><a href="" ng-click="enableRewardEdit(reward)">Edit</a>
                   <span ng-show="reward.enableEditor">
-                    <a href="" ng-click="saveReward(reward, reward.description, reward.image_url, reward.amount_cost)">Save</a>
+                    <a href="" ng-click="saveReward(reward, reward.description, reward.amount_cost, reward.image_url)">Save</a>
                     <a href="" ng-click="disableEditor(reward)">Cancel</a>
-                    <a href="" ng-click="deleteTask(reward)">Delete</a>
+                    <a href="" ng-click="deleteReward(reward)">Delete</a>
                   </span>
                 </td>
               </tr>
           </table>
         </span>
-      </div> -->
+      </div>
         
 
     <h2>Check Off Time!</h2>

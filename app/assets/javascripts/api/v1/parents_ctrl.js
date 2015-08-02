@@ -55,18 +55,6 @@
       $scope.myChild = null;
     };
 
-    $scope.addReward=function(rewardDescription, amountCost, image, child){
-      $http.post('api/v1/reward/new.json', {
-        child_id: child.id,
-        description: rewardDescription,
-        image_url: image,
-        amount_cost: amountCost});
-      $scope.rewardDescription = null;
-      $scope.amountCost = null;
-      $scope.image = null;
-      $scope.myChild = null;
-    };
-
     $scope.enableTaskEdit = function(task){
       task.enableEditor = true;
     };
@@ -83,17 +71,51 @@
       });
       task.enableEditor = false;
     };
+
+    $scope.addReward=function(rewardDescription, amountCost, image, child){
+      var reward = { 
+        child_id: child.id,
+        description: rewardDescription,
+        image_url: image,
+        amount_cost: amountCost,
+        status: "not bought"
+      };
+      $http.post('api/v1/reward/new.json', reward);
+      child.rewards_not_bought.push(reward);
+      $scope.rewardDescription = null;
+      $scope.amountCost = null;
+      $scope.image = null;
+      $scope.myChild = null;
+    };
+
+    $scope.enableRewardEdit = function(reward){
+      reward.enableEditor = true;
+    };
+
+    $scope.disableEditor = function(reward) {
+      reward.enableEditor = false;
+    };
+
+    $scope.saveReward = function(reward, description, amountCost, image) {
+      $http.patch('api/v1/edit_reward/' + reward.id + '.json',{
+        description: description,
+        amount_cost: amountCost,
+        image_url: image,
+      }).success(function(response){
+      });
+      reward.enableEditor = false;
+    };
     
-    $scope.deleteTask = function(task) {
-      var task_id = task.id;
+    $scope.deleteReward = function(reward) {
+      var reward_id = reward.id;
         for(var j=0; j < $scope.children.length; j++){
-          for (var i=0; i < $scope.children[j].incomplete_tasks.length; i++){
-            if (task_id === $scope.children[j].incomplete_tasks[i].id) {
-              $scope.children[j].incomplete_tasks.splice(i,1);
+          for (var i=0; i < $scope.children[j].rewards_not_bought.length; i++){
+            if (reward_id === $scope.children[j].rewards_not_bought[i].id) {
+              $scope.children[j].rewards_not_bought.splice(i,1);
             }
           }
         }
-      $http.delete('api/v1/task/' + task.id + '.json', {
+      $http.delete('api/v1/reward/' + reward.id + '.json', {
       });
     };
       
