@@ -11,6 +11,7 @@ json.array! @parents.each do |parent|
     json.incomplete_tasks child.incomplete_tasks
     json.tasks_needing_approval child.child_tasks_needing_approval
     json.rewards_needing_approval child.child_rewards_needing_approval
+    json.rewards_not_bought child.rewards_not_bought
   end
 
   json.all_childrens_incomplete_tasks parent.childrens_incomplete_tasks

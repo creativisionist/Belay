@@ -6,7 +6,7 @@ class Api::V1::ParentsController < ApplicationController
   def add_task
     child = User.find_by(id: params[:child_id])
     user = User.find_by(params[:user_id])
-    @task = Task.new(to_do: params[:to_do], amount_earned: params[:amount_earned], status: "incomplete", user_id: user.id, child_id: child.id)
+    @task = Task.new(to_do: params[:to_do], amount_earned: params[:amount_earned], status: params[:status], user_id: user.id, child_id: child.id)
     if @task.save
       render json: @task.to_json
     else

@@ -19,6 +19,7 @@
             $scope.childrens_incomplete_tasks = $scope.current_parent.all_childrens_incomplete_tasks;
             $scope.tasks_needing_approval = $scope.current_parent.all_childrens_tasks_needing_approval;
             $scope.rewards_needing_approval = $scope.current_parent.all_rewards_needing_approval;
+            $scope.rewards_not_bought = $scope.current_parent.rewards_not_bought;
             $scope.children = $scope.current_parent.children;
           }
         }
@@ -40,24 +41,18 @@
     };
 
     $scope.addTask=function(toDo, amountEarned, child) {
-      var newTask = {
+      var task = {
         child_id: child.id,
-        to_do: toDo,
-        amount_earned: amountEarned
+        to_do: toDo, 
+        amount_earned: amountEarned,
+        status: "incomplete"
       };
 
-      $http.post('api/v1/task/new.json', newTask).success(function(response){
-        var task_id = response.id;
-        for(var j=0; j < $scope.children.length; j++){
-          for (var i=0; i < $scope.children[j].incomplete_tasks.length; i++){
-            if (task_id === $scope.children[j].incomplete_tasks[i].id) {
-              $scope.children[j].incomplete_tasks.push(newTask);
-            }
-          }
-        }
-      });
+      $http.post('api/v1/task/new.json', task);
+      child.incomplete_tasks.push(task);
       $scope.toDo = null;
       $scope.amountEarned = null;
+      $scope.myChild = null;
     };
 
     $scope.addReward=function(rewardDescription, amountCost, image, child){
@@ -69,9 +64,10 @@
       $scope.rewardDescription = null;
       $scope.amountCost = null;
       $scope.image = null;
+      $scope.myChild = null;
     };
 
-    $scope.enableEdit = function(task){
+    $scope.enableTaskEdit = function(task){
       task.enableEditor = true;
     };
 
@@ -166,6 +162,7 @@
     $scope.addInterestRate=function(interestRate, child){
       $http.patch('api/v1/interest_rate.json', {child_id: child.id, interest_rate: interestRate});
       $scope.interestRate = null;
+      $scope.myChild = null;
     };
 
     window.scope = $scope;
