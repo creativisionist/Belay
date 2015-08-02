@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
     child_user_interests.where.not(withdrawl_status: "paid")
   end
 
+  def paid_interests
+    child_user_interests.where(withdrawl_status: "paid")
+  end
+
   def childrens_incomplete_tasks
     tasks.where(status: "incomplete")
   end

@@ -20,12 +20,17 @@
             $scope.unbought_rewards = $scope.current_child.rewards_not_bought;
             $scope.total_balance = $scope.current_child.total_balance;
             $scope.current_investments = $scope.current_child.current_investments;
+            $scope.paid_interests = $scope.current_child.paid_interests;
+            $scope.paid_interest_final = $scope.current_child.paid_interests.final_balance;
             $scope.interest_rate = $scope.current_child.interest_rate;
+          $scope.total_investments = 0;
           for (var j = 0; j < $scope.current_child.current_investments.length; j++) {
             $scope.total_investments += parseFloat($scope.current_child.current_investments[j].investment_balance_to_date);
             }
-            $scope.total_investments = $scope.total_investments.toFixed(2);
-            $scope.investments_and_balance = (parseFloat($scope.total_investments) + parseFloat($scope.total_balance)).toFixed(2);
+            $scope.total_investments = $scope.total_investments
+              .toFixed(2);
+            $scope.investments_and_balance = (parseFloat($scope.total_investments) + parseFloat($scope.total_balance))
+              .toFixed(2);
           }
         }
     };
@@ -52,7 +57,9 @@
       $http.patch('api/v1/children/' + investment_id + '.json', {
         withdrawl_status: "paid"
       }).success(function(response){
-        self.location.reload($scope.current_investments);
+        $http.get("/api/v1/children.json").then(function(response2) {
+          setChildren(response2);
+        });
       });
     };
 

@@ -17,6 +17,11 @@ json.array! @children.each do |child|
     json.withdrawl_status investment.withdrawl_status
   end
 
+  json.paid_interests child.paid_interests.each do |paid_interest|
+    json.id paid_interest.id
+    json.final_balance paid_interest.final_balance
+  end
+
   json.incomplete_tasks child.incomplete_tasks
 
   json.all_tasks child.child_tasks.each do |child_task|
