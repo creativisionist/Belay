@@ -8,7 +8,7 @@ class Api::V1::ParentsController < ApplicationController
     user = User.find_by(params[:user_id])
     @task = Task.new(to_do: params[:to_do], amount_earned: params[:amount_earned], status: "incomplete", user_id: user.id, child_id: child.id)
     if @task.save
-      render json: {message: "Successful"}
+      render json: @task.to_json
     else
       head :no_content
     end
@@ -26,12 +26,27 @@ class Api::V1::ParentsController < ApplicationController
     render json: @task.to_json
   end
 
+  def edit_task
+    @task = Task.find_by(id: params[:id])
+    @task.update(to_do: params[:to_do], amount_earned: params[:amount_earned])
+    if @task.save
+      render json: @task.to_json
+    end
+  end
+
+  def destroy_task
+    task_id = params[:id]
+    task = Task.find_by(id:task_id)
+    task.destroy
+    render json: { message: "Successful" }
+  end
+
   def add_reward
     child = User.find_by(id: params[:child_id])
     user = User.find_by(params[:user_id])
     @reward = Reward.new(description: params[:description], amount_cost: params[:amount_cost], image_url: params[:image_url], status: "not bought", user_id: user.id, child_id: child.id)
     if @reward.save
-      render json: {message:"Successful"}
+      render json: { message: "Successful" }
     else
       head :no_content
     end
@@ -53,7 +68,7 @@ class Api::V1::ParentsController < ApplicationController
     @interest = User.find_by(id: params[:child_id])
     @interest.update(interest_rate: params[:interest_rate])
     if @interest.save
-      render json: {message: "Successful"}
+      render json: { message: "Successful" }
     end
   end
 end

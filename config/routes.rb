@@ -39,6 +39,8 @@ Rails.application.routes.draw do
       post '/task/new' => 'parents#add_task'
       post '/reward/new' => 'parents#add_reward'
       patch '/parents/update_task/:id' => 'parents#update_task'
+      delete '/task/:id' => 'parents#destroy_task'
+      patch '/parents/edit_task/:id' => 'parents#edit_task'
       patch '/parents/update_reward/:id' => 'parents#update_reward'
       patch '/interest_rate' => 'parents#update_interest_rate'
     end

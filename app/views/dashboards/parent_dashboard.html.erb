@@ -45,9 +45,9 @@
                 <td><input ng-show="task.enableEditor" ng-model="task.amount_earned"></td>
                 <td><a href="" ng-click="enableEdit(task)">Edit</a>
                   <span ng-show="task.enableEditor">
-                    <a href="" ng-click="saveTask(task)">Save</a>
+                    <a href="" ng-click="saveTask(task, task.to_do, task.amount_earned)">Save</a>
                     <a href="" ng-click="disableEditor(task)">Cancel</a>
-                    <a href="" ng-click="delete()">Delete</a>
+                    <a href="" ng-click="deleteTask(task)">Delete</a>
                   </span>
                 </td>
               </tr>

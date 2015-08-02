@@ -39,13 +39,33 @@
         this.hoverReward = false;
     };
 
-    $scope.addTask=function(toDo, amountEarned, child){
-      $http.post('api/v1/task/new.json', {child_id: child.id, to_do: toDo, amount_earned: amountEarned});
-      $scope.to_do = null;
+    $scope.addTask=function(toDo, amountEarned, child) {
+      var newTask = {
+        child_id: child.id,
+        to_do: toDo,
+        amount_earned: amountEarned
+      };
+
+      $http.post('api/v1/task/new.json', newTask).success(function(response){
+        var task_id = response.id;
+        for(var j=0; j < $scope.children.length; j++){
+          for (var i=0; i < $scope.children[j].incomplete_tasks.length; i++){
+            if (task_id === $scope.children[j].incomplete_tasks[i].id) {
+              $scope.children[j].incomplete_tasks.push(newTask);
+            }
+          }
+        }
+      });
+      $scope.toDo = null;
+      $scope.amountEarned = null;
     };
 
     $scope.addReward=function(rewardDescription, amountCost, image, child){
-      $http.post('api/v1/reward/new.json', {child_id: child.id, description: rewardDescription, image_url: image, amount_cost: amountCost});
+      $http.post('api/v1/reward/new.json', {
+        child_id: child.id,
+        description: rewardDescription,
+        image_url: image,
+        amount_cost: amountCost});
       $scope.rewardDescription = null;
       $scope.amountCost = null;
       $scope.image = null;
@@ -53,30 +73,33 @@
 
     $scope.enableEdit = function(task){
       task.enableEditor = true;
-      // $scope.editableTask = $scope.childrens_incomplete_tasks;
     };
 
     $scope.disableEditor = function(task) {
       task.enableEditor = false;
     };
 
-    $scope.saveTask = function(task) {
+    $scope.saveTask = function(task, toDo, amountEarned) {
       $http.patch('api/v1/parents/edit_task/' + task.id + '.json',{
-
+        to_do: toDo,
+        amount_earned: amountEarned
+      }).success(function(response){
       });
       task.enableEditor = false;
     };
     
-    $scope.delete = function(task_id) {
-
+    $scope.deleteTask = function(task) {
+      var task_id = task.id;
+        for(var j=0; j < $scope.children.length; j++){
+          for (var i=0; i < $scope.children[j].incomplete_tasks.length; i++){
+            if (task_id === $scope.children[j].incomplete_tasks[i].id) {
+              $scope.children[j].incomplete_tasks.splice(i,1);
+            }
+          }
+        }
+      $http.delete('api/v1/task/' + task.id + '.json', {
+      });
     };
-    
-
-    // var task_id = response.id;
-    //     for(var j=0; j < $scope.children.length; j++){
-    //       for (var i=0; i < $scope.children[j].childrens_incomplete_tasks.length; i++){
-    //         if (task_id === $scope.children[j].childrens_incomplete_tasks[i].id) {
-    //         $scope.editableTask = $scope.children[j].childrens_incomplete_tasks;
       
 
     $scope.approveTask=function(task_id){
