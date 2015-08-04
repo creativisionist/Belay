@@ -2,12 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.header {
-  position: fixed;
-  width: 100%;
-  z-index: 10;
-}
 
+//parent_and_child
 .header .navbar-brand {
   font-weight: 900;
 }
@@ -21,14 +17,30 @@
   width:100%;
   min-height: 800px;
   padding: 50px 0;
-  border-bottom: 10px solid grey;
+  border-bottom: 1px solid grey;
 }
 
 .page-section {
   width: 100%;
   min-height: 800px;
   padding: 50px 0;
-  border-bottom: 10px solid grey;
+  border-bottom: 1px solid grey;
+}
+
+.back-to-top {
+  display: inline-block;
+  clear: both;
+  background: #fff;
+  color: #333;
+  padding: 0 10px 5px;
+  margin: 20px 0 0;
+  text-shadow: none;
+}
+
+.back-to-top:hover {
+  background: #333;
+  color: #fff;
+  text-decoration: none;
 }
 
 .ng-enter, .ng-move{
@@ -52,4 +64,62 @@
   .navbar-nav {
     float: right;
   }
+}
+
+@media (max-width: 480px) {
+
+}
+
+// parent
+.header-parent {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  background-color: black;
+}
+
+.page-section#add {
+
+}
+
+.page-section#tasks {
+
+}
+
+.page-section#rewards {
+
+}
+
+.page-section#checkoff {
+
+}
+
+.page-section#interest {
+
+}
+
+
+//child
+
+.header-child {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  background-color: orange;
+}
+
+.page-section#todo {
+
+}
+
+.page-section#bank {
+
+}
+
+.page-section#investments {
+
+}
+
+.page-section#store {
+
 }
