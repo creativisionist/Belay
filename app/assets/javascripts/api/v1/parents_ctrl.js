@@ -30,6 +30,10 @@
       $scope.descending = !$scope.descending;
     };
 
+    $scope.toggleTask = function(){
+      this.toggleTask = !this.toggleTask;
+    };
+
     $scope.hoverIn=function() {
         this.hoverTask = true;
         this.hoverReward = true;

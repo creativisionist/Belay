@@ -1,0 +1,44 @@
+.header .navbar-brand {
+  font-weight: 900;
+}
+
+.header .navbar {
+  margin: 0;
+  border: none;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  background-color: white;
+}
+
+.page-section#login {
+  width: 100%;
+  min-height: 800px;
+  padding: 50px 0;
+  background-image: url("<%= asset_path('rockclimbingkidjpg') %>");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.page-section#about {
+  width: 100%;
+  min-height: 800px;
+  padding: 50px 0;
+}
+
+@media (min-width: 768px) {
+  .header .navbar-brand {
+    padding-left: 45px;
+  }
+  .navbar-nav {
+    float: right;
+  }
+}
+
+@media (max-width: 480px) {
+
+}

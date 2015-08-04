@@ -73,11 +73,11 @@
 
     <section id="tasks" class="page-section">
       <div class="container">
-        <div ng-repeat="child in children" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+        <div ng-repeat="child in children" ng-click="toggleTask()">
           <div>
             <h3>{{ child.first_name }}'s To Do List</h3>
           </div>
-          <span ng-show="hoverTask">
+          <span ng-hide="toggleTask()">
             <table>
               <tr>
                 <th ng-click="toggleOrder('to_do')">Task</th>

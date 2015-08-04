@@ -1,26 +1,129 @@
-<h2>Log in</h2>
+<!DOCTYPE html>
+<html>
+<head>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+</head>
+<body>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="header">
+    <div class="header-container">
+      <nav class="navbar" role="navigation">
+        <div class="navbar-header">
+          <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand scroll-top">Belay</a>
+          </div>
+          <div id="main-nav" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#" class="scroll-link" data-id="login">Login</a></li>
+            <li><a href="#" class="scroll-link" data-id="about">About</a></li>
+            <li><a href="#" class="scroll-link" data-id="research">Research</a></li>
+            <% if user_signed_in? %>
+            <li><a href="<%= edit_user_registration_path %>">Edit Account</a></li>
+            <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+  <section id="login" class="page section">
+    <div class="container">
+      <div class="title">
+        <h2>Log in</h2>
+      </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <% if devise_mapping.rememberable? -%>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end -%>
+
+        <div class="actions">
+          <%= f.submit "Log in" %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </section>
+
+  <section id="about" class="page-section">
+    <div class="container">
+      <article class="content">
+        <h1>About</h1>
+        <p>An app designed for family use, its purpose is to help encourage delayed gratification in an ever-changing and instant-gratifying society.</p>
+        <p>Currently, children can be assigned and complete tasks for poitns and purchase rewards.  In their imaginary bank they can choose to invest at the present interest rate their parent sets, and after maturation, choose when to have it available for spending.  Of course, finished tasks and purchased rewards are at the parent's approval.</p>
+      </article>
+      <a href="#" class="scroll-top back-to-top">^</a>
+    </div>
+  </section>
+
+  <section id="research" class="page-section">
+    <div class="container">
+      <article class="content">
+        <h1>Research</h1>
+        <p>In rock climbing, belaying someone helps secure the climber as they reach for greater heights.  Studies show children instilled with delayed gratification go on to live more successful and stable lives that, in turn, have a positive effect in other areas of life, on society, and the economy as a whole.</p>
+        <p>Why not use this to help belay your child into the future?</p>
+      </article>
+      <a href="#" class="scroll-top back-to-top">^</a>
+    </div>
+  </section>
+
+</body>
+</html>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  // navigation click actions 
+  $('.scroll-link').on('click', function(event){
+    event.preventDefault();
+    var sectionID = $(this).attr("data-id");
+    scrollToID('#' + sectionID, 750);
+  });
+  // scroll to top action
+  $('.scroll-top').on('click', function(event) {
+    event.preventDefault();
+    $('html, body').animate({scrollTop:0}, 'slow');     
+  });
+  // mobile nav toggle
+  $('#nav-toggle').on('click', function (event) {
+    event.preventDefault();
+    $('#main-nav').toggleClass("open");
+  });
+});
+// scroll function
+function scrollToID(id, speed){
+  var offSet = 50;
+  var targetOffset = $(id).offset().top - offSet;
+  var mainNav = $('#main-nav');
+  $('html,body').animate({scrollTop:targetOffset}, speed);
+  if (mainNav.hasClass("open")) {
+    mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+    mainNav.removeClass("open");
+  }
+}
+if (typeof console === "undefined") {
+    console = {
+        log: function() { }
+    };
+}
+</script>
