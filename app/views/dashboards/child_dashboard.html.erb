@@ -45,15 +45,16 @@
 
   <div id="todo" class="page-section">
     <div class="container">
+
     <h2>Tasks To Complete:</h2>
-      <div class="emoji">
+      <div class="emoji wow rollIn">
         <div class="text">
         <h3>Total #: {{ incomplete_tasks.length }}</h3>
         <h2>¯\_(ツ)_/¯</h2>
         <h5>Do something today that <br />your future self will thank you for.</h5>
         </div>
       </div>
-      <table>
+      <table class="table table-striped">
         <tr>
           <th ng-click="toggleOrder('to_do')">Task</th>
           <th ng-click="toggleOrder('amount_earned')">Amount</th>
@@ -210,4 +211,8 @@ if (typeof console === "undefined") {
         log: function() { }
     };
 }
+</script>
+
+<script>
+ new WOW().init();
 </script>

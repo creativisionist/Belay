@@ -15,5 +15,6 @@
 //= require bootstrap-sprockets
 //= require angular
 //= require angular-animate
+//= require wow
 //= require app
 //= require_tree .
