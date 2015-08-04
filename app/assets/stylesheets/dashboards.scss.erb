@@ -1,9 +1,5 @@
-// Place all the styles related to the dashboards controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/*parent_and_child*/
 
-
-//parent_and_child
 .header .navbar-brand {
   font-weight: 900;
 }
@@ -13,11 +9,18 @@
   border: none;
 }
 
-.title {
-  width:100%;
-  min-height: 800px;
-  padding: 50px 0;
-  border-bottom: 1px solid grey;
+.clock {
+  text-alight: center;
+  width: 350px;
+  padding: 0.5em 0;
+}
+
+.clock h2 {
+  text-decoration: none;
+}
+
+.clock h2 span {
+  color: lightgray;
 }
 
 .page-section {
@@ -70,12 +73,25 @@
 
 }
 
-// parent
+/*parent*/
 .header-parent {
   position: fixed;
   width: 100%;
   z-index: 10;
-  background-color: black;
+  background-color: white;
+}
+
+.title-parent {
+  width:100%;
+  min-height: 800px;
+  padding: 50px 0;
+  border-bottom: 1px solid grey;
+  background-image: image-url("<%= asset_path('beach.jpg') %>");
+}
+
+.title-parent h1 {
+  margin: 100px 0;
+  color: white;
 }
 
 .page-section#add {
@@ -99,7 +115,7 @@
 }
 
 
-//child
+/*child*/
 
 .header-child {
   position: fixed;
