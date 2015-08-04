@@ -27,7 +27,6 @@
   width: 100%;
   min-height: 800px;
   padding: 50px 0;
-  border-bottom: 1px solid grey;
 }
 
 .back-to-top {
@@ -85,12 +84,28 @@
   width:100%;
   min-height: 800px;
   padding: 50px 0;
-  border-bottom: 1px solid grey;
-  background-image: image-url("<%= asset_path('beach.jpg') %>");
+  background-image: url("<%= asset_path('beach.jpg') %>");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .title-parent h1 {
   margin: 100px 0;
+  color: white;
+}
+
+.parallax-1 {
+  min-height: 600px;
+  padding: 50px 0;
+  background-position: 50% 50%;
+  background-image: url("<%= asset_path('pool.jpg') %>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.parallax-1 h1 {
+  padding: 50px;
   color: white;
 }
 
@@ -102,12 +117,38 @@
 
 }
 
+.parallax-2 {
+  min-height: 500px;
+  padding: 50px 0;
+  text-align: right;
+  color: grey;
+  background-position: 50% 50%;
+  background-image: url("<%= asset_path('saltflat.jpg') %>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 .page-section#rewards {
 
 }
 
+.parallax-3 {
+  width: 100%;
+  min-height: 700px;
+  padding: 50px 0;
+  color: #FFA651;
+  background-position: 50% 50%;
+  background-image: url("<%= asset_path('family.jpg') %>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 .page-section#checkoff {
 
+}
+
+.parallax-4 {
+  
 }
 
 .page-section#interest {
