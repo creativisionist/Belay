@@ -45,14 +45,14 @@
   text-decoration: none;
 }
 
-.ng-enter, .ng-move{
+.ng-enter, .ng-move {
   -webkit-animation: fadeIn 1s;
   -moz-animation: fadeIn 1s;
   -o-animation: fadeIn 1s;
   animation: fadeIn 1s;
 }
 
-.ng-leave{
+.ng-leave {
   -webkit-animation: fadeOut 1s;
   -moz-animation: fadeOut 1s;
   -o-animation: fadeOut 1s;
@@ -148,7 +148,7 @@
 }
 
 .parallax-4 {
-  
+
 }
 
 .page-section#interest {
@@ -163,6 +163,21 @@
   width: 100%;
   z-index: 10;
   background-color: orange;
+}
+
+.title-child {
+  width:100%;
+  min-height: 800px;
+  padding: 50px 0;
+  background-image: url("<%= asset_path('children.jpg') %>");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.title-child h1 {
+  margin: 100px 0;
+  color: #57CF5B;
 }
 
 .page-section#todo {

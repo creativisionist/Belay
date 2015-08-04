@@ -34,16 +34,21 @@
     </div>
   </div>
 
-  <div class="title">
+  <div class="title-child">
     <div class="container">
-    <h1>Welcome to your dashboard, {{ first_name }}!</h1>
+      <h1>Welcome to your dashboard, {{ first_name }}!</h1>
+      <div class="clock">
+        <h2><span>Current local time in</span><br />Chicago, United States</h2> <iframe src="http://www.zeitverschiebung.net/clock-widget-iframe?language=en&timezone=America%2FChicago" width="100%" height="130" frameborder="0"></iframe>
+      </div>
     </div>
   </div>
 
   <div id="todo" class="page-section">
     <div class="container">
     <h2>Tasks To Complete:</h2>
+      <div class="emoji">
       <h3>¯\_(ツ)_/¯</h3>
+      </div>
       <div>
         Total #: {{ incomplete_tasks.length }}
       </div>
