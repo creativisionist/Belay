@@ -147,10 +147,6 @@
 
 }
 
-.parallax-4 {
-
-}
-
 .page-section#interest {
 
 }
@@ -162,7 +158,7 @@
   position: fixed;
   width: 100%;
   z-index: 10;
-  background-color: orange;
+  background-color: #F8FFD8;
 }
 
 .title-child {
@@ -180,8 +176,49 @@
   color: #57CF5B;
 }
 
+.emoji {
+  float: right;
+  margin: -50px auto;
+  text-align: center;
+  background: #8BC4FF;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+.emoji .text {
+  float: right;
+  margin: 50px;
+  color: black;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  text-align: center;
+  background: #BD9FFF;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  border-radius: 50%;
+}
+
+.emoji .ng-enter {
+  -webkit-animation: slideInRight 1s;
+  -moz-animation: slideInRight 1s;
+  -o-animation: slideInRight 1s;
+  animation: slideInRight 1s; 
+}
+
 .page-section#todo {
 
+}
+
+.parallax-child-1 {
+  min-height: 500px;
+  padding: 50px 0;
+  text-align: right;
+  color: #8AFAD5;
+  background-image: url("<%= asset_path('bubbles.png') %>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .page-section#bank {
@@ -189,7 +226,21 @@
 }
 
 .page-section#investments {
+  background-image: url("<%= asset_path('climbanimation.gif') %>");
+  background-repeat: no-repeat;
+  attachment: fixed;
+  background-position: right;
+}
 
+.parallax-child-3 {
+  width: 100%;
+  min-height: 500px;
+  padding: 50px 0;
+  color: #FAE256;
+  background-image: url("<%= asset_path('landscape3.jpg') %>");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .page-section#store {
