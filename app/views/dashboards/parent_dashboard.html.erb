@@ -2,135 +2,189 @@
 
   <div ng-controller="parentsCtrl" ng-init="setup(<%= current_user.id %>)">
 
-    <h1>Welcome to your dashboard, {{ first_name }} </h1>
-
-      <div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-        <h5>Add a Task</h5>
-        <span ng-show="hoverTask">
-          <div>
-            Task: <input ng-model="toDo" placeholder="e.g.: Clean your room">
-            Points You Want Them to Earn:<input ng-model="amountEarned" placeholder="e.g.: 500">
-            <select ng-model="myChild" ng-options="child.first_name for child in children"></select>
-            <button ng-click="addTask(toDo, amountEarned, myChild)">Save</button>
+    <div class="header">
+      <div class="container">
+        <nav class="navbar" role="navigation">
+          <div class="navbar-header">
+            <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <% if user_is_child? %>
+            <a href="<%= child_dashboard_path %>" class="navbar-brand scroll-top">Belay</a>
+            <% else %>
+            <a href="<%= parent_dashboard_path %>" class="navbar-brand scroll-top">Belay</a>
+            <% end %>
           </div>
-        </span>
-      </div>
-      <div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-        <h5>Add a Reward</h5>
-<!--         <span ng-show="hoverTask"> -->
-          <div>
-            Reward: <input ng-model="rewardDescription" placeholder="e.g.: Late curfew">
-            Points You Want It to Cost:<input ng-model="amountCost" placeholder="e.g.: 800">
-            Image URL:<input ng-model="image" placeholder="e.g.: http://www.website/image.jpeg">
-            <select ng-model="myChild" ng-options="child.first_name for child in children"></select>
-            <button ng-click="addReward(rewardDescription, amountCost, image, myChild)">Save</button>
+          <div id="main-nav" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="#" class="scroll-link" data-id="add">Add Tasks/Rewards</a></li>
+              <li><a href="#" class="scroll-link" data-id="todo">Tasks</a></li>
+              <li><a href="#" class="scroll-link" data-id="rewards">Rewards</a></li>
+              <li><a href="#" class="scroll-link" data-id="checkoff">Approve</a></li>
+              <li><a href="#" class="scroll-link" data-id="interest">Set An Interest Rate</a></li>
+              <% if user_signed_in? %>
+              <li><a href="<%= edit_user_registration_path %>">Edit Account</a></li>
+              <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+              <% end %>
+            </ul>
           </div>
-        </span>
+        </nav>
+      </div>
+    </div>
+
+    <div class="title">
+      <div class="container">
+        <h1>Welcome to your dashboard, {{ first_name }}</h1>
+      </div>
+    </div>
+      <div id="add" class="page-section">
+        <div class="container">
+          <div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+            <h5>Add a Task</h5>
+              <span ng-show="hoverTask">
+                <div>
+                  Task: <input ng-model="toDo" placeholder="e.g.: Clean your room">
+                  Points You Want Them to Earn:<input ng-model="amountEarned" placeholder="e.g.: 500">
+                  <select ng-model="myChild" ng-options="child.first_name for child in children"></select>
+                  <button ng-click="addTask(toDo, amountEarned, myChild)">Save</button>
+                </div>
+              </span>
+              <div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+            <h5>Add a Reward</h5>
+  <!--         <span ng-show="hoverTask"> -->
+                <div>
+                  Reward: <input ng-model="rewardDescription" placeholder="e.g.: Late curfew">
+                  Points You Want It to Cost:<input ng-model="amountCost" placeholder="e.g.: 800">
+                  Image URL:<input ng-model="image" placeholder="e.g.: http://www.website/image.jpeg">
+                  <select ng-model="myChild" ng-options="child.first_name for child in children"></select>
+                  <button ng-click="addReward(rewardDescription, amountCost, image, myChild)">Save</button>
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div ng-repeat="child in children" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-        <div>
-          <h3>{{ child.first_name }}'s To Do List</h3>
+      <div id="todo" class="page-section">
+        <div class="container">
+          <div ng-repeat="child in children" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+            <div>
+              <h3>{{ child.first_name }}'s To Do List</h3>
+            </div>
+    <!--         <span ng-show="hoverTask"> -->
+              <table>
+                <tr>
+                  <th ng-click="toggleOrder('to_do')">Task</th>
+                  <th ng-click="toggleOrder('amount_earned')">Amount</th>
+                </tr>
+                  <tr ng-repeat="task in child.incomplete_tasks | orderBy:orderAttribute:descending">
+                    <td ng-hide="task.enableEditor">{{ task.to_do }}</td>
+                    <td><input ng-show="task.enableEditor" ng-model="task.to_do"></td>
+                    <td ng-hide="task.enableEditor">{{ task.amount_earned }}</td>
+                    <td><input ng-show="task.enableEditor" ng-model="task.amount_earned"></td>
+                    <td><a href="" ng-click="enableTaskEdit(task)">Edit</a>
+                      <span ng-show="task.enableEditor">
+                        <a href="" ng-click="saveTask(task, task.to_do, task.amount_earned)">Save</a>
+                        <a href="" ng-click="disableEditor(task)">Cancel</a>
+                        <a href="" ng-click="deleteTask(task)">Delete</a>
+                      </span>
+                    </td>
+                  </tr>
+              </table>
+            <!-- </span> -->
+          </div>
         </div>
-<!--         <span ng-show="hoverTask"> -->
-          <table>
-            <tr>
-              <th ng-click="toggleOrder('to_do')">Task</th>
-              <th ng-click="toggleOrder('amount_earned')">Amount</th>
-            </tr>
-              <tr ng-repeat="task in child.incomplete_tasks | orderBy:orderAttribute:descending">
-                <td ng-hide="task.enableEditor">{{ task.to_do }}</td>
-                <td><input ng-show="task.enableEditor" ng-model="task.to_do"></td>
-                <td ng-hide="task.enableEditor">{{ task.amount_earned }}</td>
-                <td><input ng-show="task.enableEditor" ng-model="task.amount_earned"></td>
-                <td><a href="" ng-click="enableTaskEdit(task)">Edit</a>
-                  <span ng-show="task.enableEditor">
-                    <a href="" ng-click="saveTask(task, task.to_do, task.amount_earned)">Save</a>
-                    <a href="" ng-click="disableEditor(task)">Cancel</a>
-                    <a href="" ng-click="deleteTask(task)">Delete</a>
-                  </span>
-                </td>
-              </tr>
-          </table>
-        </span>
       </div>
 
-     <div ng-repeat="child in children" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-        <div>
-          <h3>{{ child.first_name }}'s Rewards</h3>
+      <div id="rewards" class="page-section">
+        <div class="container">
+            <div ng-repeat="child in children" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+            <div>
+              <h3>{{ child.first_name }}'s Rewards</h3>
+            </div>
+             <span ng-show="hoverReward">
+              <table>
+                <tr>
+                  <th ng-click="toggleOrder('description')">Description</th>
+                  <th ng-click="toggleOrder('amount_cost')">Price</th>
+                  <th ng-click="toggleOrder('image_url')">Image URL</th>
+                </tr>
+                  <tr ng-repeat="reward in child.rewards_not_bought | orderBy:orderAttribute:descending">
+                    <td ng-hide="reward.enableEditor">{{ reward.description }}</td>
+                    <td><input ng-show="reward.enableEditor" ng-model="reward.description"></td>
+                    <td ng-hide="reward.enableEditor">{{ reward.amount_cost }}</td>
+                    <td><input ng-show="reward.enableEditor" ng-model="reward.amount_cost"></td>
+                    <td ng-hide="reward.enableEditor"> {{ reward.image_url }}</td>
+                    <td><input ng-show="reward.enableEditor" ng-model="reward.image_url"></td>
+                    <td><a href="" ng-click="enableRewardEdit(reward)">Edit</a>
+                      <span ng-show="reward.enableEditor">
+                        <a href="" ng-click="saveReward(reward, reward.description, reward.amount_cost, reward.image_url)">Save</a>
+                        <a href="" ng-click="disableEditor(reward)">Cancel</a>
+                        <a href="" ng-click="deleteReward(reward)">Delete</a>
+                      </span>
+                    </td>
+                  </tr>
+              </table>
+            </span>
+          </div>
         </div>
-         <span ng-show="hoverReward">
-          <table>
-            <tr>
-              <th ng-click="toggleOrder('description')">Description</th>
-              <th ng-click="toggleOrder('amount_cost')">Price</th>
-              <th ng-click="toggleOrder('image_url')">Image URL</th>
-            </tr>
-              <tr ng-repeat="reward in child.rewards_not_bought | orderBy:orderAttribute:descending">
-                <td ng-hide="reward.enableEditor">{{ reward.description }}</td>
-                <td><input ng-show="reward.enableEditor" ng-model="reward.description"></td>
-                <td ng-hide="reward.enableEditor">{{ reward.amount_cost }}</td>
-                <td><input ng-show="reward.enableEditor" ng-model="reward.amount_cost"></td>
-                <td ng-hide="reward.enableEditor"> {{ reward.image_url }}</td>
-                <td><input ng-show="reward.enableEditor" ng-model="reward.image_url"></td>
-                <td><a href="" ng-click="enableRewardEdit(reward)">Edit</a>
-                  <span ng-show="reward.enableEditor">
-                    <a href="" ng-click="saveReward(reward, reward.description, reward.amount_cost, reward.image_url)">Save</a>
-                    <a href="" ng-click="disableEditor(reward)">Cancel</a>
-                    <a href="" ng-click="deleteReward(reward)">Delete</a>
-                  </span>
-                </td>
-              </tr>
-          </table>
-        </span>
       </div>
         
+      <div id="checkoff" class="page-section">
+        <div class="container">
+          <h2>Check Off Time!</h2>
+              <h3>¯\_(ツ)_/¯</h3>
+                <div ng-repeat="child in children">
+                  <h3>{{ child.first_name }}'s Stuff</h3>
+                  <table>
+                    <tr>
+                      <th ng-click="toggleOrder('to_do')">Task</th>
+                      <th ng-click="toggleOrder('amount_earned')">Amount</th>
+                    </tr>
+                    <tr ng-repeat="task in child.tasks_needing_approval | orderBy:orderAttribute:descending">
+                      <td>{{ task.to_do }}</td>
+                      <td>{{ task.amount_earned }}</td>
+                      <td><button ng-click="approveTask(task.id)">Approve
+                      </button></td>
+                      <td><button ng-click="incompleteTask(task.id)">Not Actually Complete</button></td>
+                    </tr>
+                  </table>
+                  <table>
+                    <tr>
+                      <th></th>
+                      <th ng-click="toggleOrder('description')">Description</th>
+                      <th ng-click="toggleOrder('amount_cost')">Price</th>
+                    </tr>
+                    <tr ng-repeat="reward in child.rewards_needing_approval | orderBy:orderAttribute:descending">
+                      <td><img ng-src="{{ reward.image_url }}" width="100"></td>
+                      <td>{{ reward.description }}</td>
+                      <td>{{ reward.amount_cost }}</td>
+                      <td><button ng-click="approveOrder(reward.id)">Approve</button>
+                      <button ng-click="cancelOrder(reward.id)">Cancel Order</button></td>
+                    </tr>
+                  </table>
+                </div>
 
-    <h2>Check Off Time!</h2>
-    <h3>¯\_(ツ)_/¯</h3>
-      <div ng-repeat="child in children">
-        <h3>{{ child.first_name }}'s Stuff</h3>
-        <table>
-          <tr>
-            <th ng-click="toggleOrder('to_do')">Task</th>
-            <th ng-click="toggleOrder('amount_earned')">Amount</th>
-          </tr>
-          <tr ng-repeat="task in child.tasks_needing_approval | orderBy:orderAttribute:descending">
-            <td>{{ task.to_do }}</td>
-            <td>{{ task.amount_earned }}</td>
-            <td><button ng-click="approveTask(task.id)">Approve
-            </button></td>
-            <td><button ng-click="incompleteTask(task.id)">Not Actually Complete</button></td>
-          </tr>
-        </table>
-        <table>
-          <tr>
-            <th></th>
-            <th ng-click="toggleOrder('description')">Description</th>
-            <th ng-click="toggleOrder('amount_cost')">Price</th>
-          </tr>
-          <tr ng-repeat="reward in child.rewards_needing_approval | orderBy:orderAttribute:descending">
-            <td><img ng-src="{{ reward.image_url }}" width="100"></td>
-            <td>{{ reward.description }}</td>
-            <td>{{ reward.amount_cost }}</td>
-            <td><button ng-click="approveOrder(reward.id)">Approve</button>
-            <button ng-click="cancelOrder(reward.id)">Cancel Order</button></td>
-          </tr>
-        </table>
+        </div>
       </div>
 
 
-    <h3>Set interest rate per day for your children's investments:</h3>
-      <div ng-repeat="child in children">
-        <ol>
-          <div>
-            {{ child.first_name }}'s Current Interest Rate: {{ child.interest_rate }}
-          </div>
-        </ol>
-      </div>
+      <div id="checkoff" class="page-section">
+        <div class="container">
+          <h3>Set interest rate per day for your children's investments:</h3>
+            <div ng-repeat="child in children">
+              <ol>
+                <div>
+                  {{ child.first_name }}'s Current Interest Rate: {{ child.interest_rate }}
+                </div>
+              </ol>
+            </div>
 
-    Set Interest Rate: <input ng-model="interestRate" placeholder="e.g.: 10% = .10">
-    <select ng-model="myChild" ng-options="child.first_name for child in children"></select>
-    <button ng-click="addInterestRate(interestRate, myChild)">Save</button>
-  </div>
-</div>
+          Set Interest Rate: <input ng-model="interestRate" placeholder="e.g.: 10% = .10">
+          <select ng-model="myChild" ng-options="child.first_name for child in children"></select>
+          <button ng-click="addInterestRate(interestRate, myChild)">Save</button>
+        </div>
+      </div>

@@ -2,6 +2,35 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+.header .navbar-brand {
+  font-weight: 900;
+}
+
+.header .navbar {
+  margin: 0;
+  border: none;
+}
+
+.title {
+  width:100%;
+  min-height: 800px;
+  padding: 50px 0;
+  border-bottom: 10px solid grey;
+}
+
+.page-section {
+  width: 100%;
+  min-height: 800px;
+  padding: 50px 0;
+  border-bottom: 10px solid grey;
+}
+
 .ng-enter, .ng-move{
   -webkit-animation: fadeIn 1s;
   -moz-animation: fadeIn 1s;
@@ -14,4 +43,13 @@
   -moz-animation: fadeOut 1s;
   -o-animation: fadeOut 1s;
   animation: fadeOut 1s;
+}
+
+@media (min-width: 768px) {
+  .header .navbar-brand {
+    padding-left:0;
+  }
+  .navbar-nav {
+    float: right;
+  }
 }
