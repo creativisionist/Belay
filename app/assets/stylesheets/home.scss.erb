@@ -37,7 +37,7 @@
 
 .bg {
   width: 100%;
-  min-height: 600px;
+  min-height: 800px;
   background-image: url("<%= asset_path('rockclimbingkid.jpg') %>");
   background-position: 3% 60%;
   background-repeat: no-repeat;
@@ -53,16 +53,93 @@
   padding-right: 580px;
 }
 
+#clearlogo {
+  width: 200px;
+  height: 100px;
+  margin-top: -40em;
+  margin-left: 25em;
+}
+
+.parallax-home1 {
+  width: 100%;
+  min-height: 800px;
+  background-image: url("<%= asset_path('rockclimbingkid.jpg') %>");
+  background-position: 3% 60%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.3;
+}
+
+.parallax-home2 {
+  width: 100%;
+  min-height: 800px;
+  background-image: url("<%= asset_path('landscape.png') %>");
+  background-position: 30% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.1;
+}
+
 .page-section#about {
   width: 100%;
   min-height: 800px;
   padding: 50px 0;
+  background-image: url("<%= asset_path('landscape.png') %>");
+  background-position: 30% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+#bird1 {
+ height: 70px;
+ weidth: 70px;
+ margin-top: 5em;
+ margin-left: 40em;
+ position: absolute;
+ opacity: .5;
+}
+
+#bird2 {
+ height: 85px;
+ weidth: 85px;
+ margin-top: 10em;
+ margin-left: 60em;
+ position: absolute;
+ opacity: .7;
+}
+
+#bird3 {
+ height: 90px;
+ weidth: 90px;
+ position: absolute;
+}
+
+#bird4 {
+ height: 60px;
+ weidth: 60px;
+ margin-top: 3em;
+ margin-left: 80em;
+ position: absolute;
+ opacity: .8;
+}
+
+.page-section#about .content {
+  position: absolute;
+  z-index: 1;
 }
 
 .page-section#research {
   width: 100%;
   min-height: 800px;
   padding: 50px 0;
+  background-color: #FFFCEC;
+}
+
+#clearlogotext {
+  width: 80px;
+  height: 50px;
+  margin-top: -20px;
+  margin-left: -15px;
 }
 
 .marshmallow {
