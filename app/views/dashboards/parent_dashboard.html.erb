@@ -77,8 +77,8 @@
           <div>
             <h3>{{ child.first_name }}'s To Do List</h3>
           </div>
-          <span>
-            <table ng-show="child.show">
+          <span ng-show="child.show">
+            <table class="table table-hover">
               <tr>
                 <th ng-click="toggleOrder('to_do')">Task</th>
                 <th ng-click="toggleOrder('amount_earned')">Amount</th>
@@ -120,14 +120,14 @@
               <tr>
                 <th ng-click="toggleOrder('description')">Description</th>
                 <th ng-click="toggleOrder('amount_cost')">Price</th>
-                <th ng-click="toggleOrder('image_url')">Image URL</th>
+                <th ng-click="toggleOrder('image_url')">Image/URL</th>
               </tr>
                 <tr ng-repeat="reward in child.rewards_not_bought | orderBy:orderAttribute:descending">
                   <td ng-hide="reward.enableEditor">{{ reward.description }}</td>
                   <td><input ng-show="reward.enableEditor" ng-model="reward.description"></td>
                   <td ng-hide="reward.enableEditor">{{ reward.amount_cost }}</td>
                   <td><input ng-show="reward.enableEditor" ng-model="reward.amount_cost"></td>
-                  <td ng-hide="reward.enableEditor"> {{ reward.image_url }}</td>
+                  <td ng-hide="reward.enableEditor"><img ng-src="{{ reward.image_url }}" width="100"></td>
                   <td><input ng-show="reward.enableEditor" ng-model="reward.image_url"></td>
                   <td><a href="" ng-click="enableRewardEdit(reward)">Edit</a>
                     <span ng-show="reward.enableEditor">
@@ -159,22 +159,26 @@
             <h3>{{ child.first_name }}'s Stuff</h3>
             <table class="table in table-hover">
               <tr>
+                <h4>The best preparation for good work tomorrow is to do good work today. -EH</h4>
                 <th ng-click="toggleOrder('to_do')">Task</th>
                 <th ng-click="toggleOrder('amount_earned')">Amount</th>
+                <th>Even if they didn't complete it give them a hug, anyway. :)</th>
               </tr>
               <tr ng-repeat="task in child.tasks_needing_approval | orderBy:orderAttribute:descending">
                 <td>{{ task.to_do }}</td>
                 <td>{{ task.amount_earned }}</td>
                 <td><button ng-click="approveTask(task.id)">Approve
-                </button></td>
-                <td><button ng-click="incompleteTask(task.id)">Not Actually Complete</button></td>
+                </button>
+                <button ng-click="incompleteTask(task.id)">Incomplete</button></td>
               </tr>
             </table>
             <table class="table in table-hover">
               <tr>
-                <th></th>
+                <h4>The highest reward for a person's toil is not what they get for it, but what they become by it. -JR</h4>
+                <th>Photo</th>
                 <th ng-click="toggleOrder('description')">Description</th>
                 <th ng-click="toggleOrder('amount_cost')">Price</th>
+                <th>Decisions, decisions...</th>
               </tr>
               <tr ng-repeat="reward in child.rewards_needing_approval | orderBy:orderAttribute:descending">
                 <td><img ng-src="{{ reward.image_url }}" width="100"></td>
