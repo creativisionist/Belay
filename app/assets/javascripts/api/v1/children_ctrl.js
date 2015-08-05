@@ -16,6 +16,7 @@
           if ($scope.children[i].id === $scope.current_user) {
             $scope.current_child = $scope.children[i];
             $scope.first_name = $scope.current_child.first_name;
+            $scope.image_url = $scope.current_child.image_url;
             $scope.incomplete_tasks = $scope.current_child.incomplete_tasks;
             $scope.unbought_rewards = $scope.current_child.rewards_not_bought;
             $scope.total_balance = $scope.current_child.total_balance;

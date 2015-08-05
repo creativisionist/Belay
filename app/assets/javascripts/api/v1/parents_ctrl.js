@@ -16,6 +16,7 @@
           if ($scope.parents[i].id === $scope.current_user) {
             $scope.current_parent = $scope.parents[i];
             $scope.first_name = $scope.current_parent.first_name;
+            $scope.image_url = $scope.current_parent.image_url;
             $scope.childrens_incomplete_tasks = $scope.current_parent.all_childrens_incomplete_tasks;
             $scope.tasks_needing_approval = $scope.current_parent.all_childrens_tasks_needing_approval;
             $scope.rewards_needing_approval = $scope.current_parent.all_rewards_needing_approval;
