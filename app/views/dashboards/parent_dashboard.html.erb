@@ -95,6 +95,7 @@
 
     <section id="tasks" class="page-section">
       <div class="container">
+        <div class="parentsphoto wow fadeInRight" data-wow-duration="6s" data-wow-delay="1s"><img ng-src="{{ image_url }}"><h5>Your current photo, {{ first_name }}.</h5></div>
         <div ng-repeat="child in children" ng-click="toggleTask(child)">
           <div>
             <h3>{{ child.first_name }}'s To Do List</h3>
@@ -128,7 +129,20 @@
 
     <section class="parallax-5">
       <div class="container">
-        <h1>Remember to reward yourself, too.</h1>
+        <h1>The first task of a leader is to keep hope alive.<br />-JB</h1><br /><br />
+        <h1>While you build them up,<br />build yourself up, too.</h1><br /><br /><br />
+      </div>
+    </section>
+
+    <section class="parallax-5b">
+      <div class="container">
+        <h1>...you know you deserve it.</h1>
+      </div>
+    </section>
+
+    <section class="parallax-6">
+      <div class="container">
+        <h1>In the meantime...</h1>
       </div>
     </section>
 
@@ -168,7 +182,7 @@
       </div>
     </section>
 
-    <section class="parallax-6">
+    <section class="parallax-7">
       <div class="container">
         <h1>To be in your children's memories tomorrow,</h1>
         <h1>you have to be in their lives today.</h1>
@@ -276,4 +290,8 @@ if (typeof console === "undefined") {
         log: function() { }
     };
 }
+</script>
+
+<script>
+ new WOW().init();
 </script>

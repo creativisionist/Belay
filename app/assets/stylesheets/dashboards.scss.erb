@@ -182,7 +182,14 @@ nav {
 }
 
 .page-section#tasks {
+  background-color: #7993EA;
+}
 
+.parentsphoto {
+  float: right;
+  text-align: right;
+  max-width: 1000px;
+  max-height: 800px;
 }
 
 .page-section#tasks .table {
@@ -196,7 +203,7 @@ nav {
 
 
 .parallax-5 {
-  min-height: 500px;
+  min-height: 700px;
   padding: 50px 0;
   text-align: right;
   color: grey;
@@ -204,13 +211,46 @@ nav {
   background-image: url("<%= asset_path('saltflat.jpg') %>");
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: cover;
+}
+
+.parallax-5b {
+  width: 100%;
+  min-height: 800px;
+  padding: 50px 0;
+  text-align: right;
+  color: grey;
+  background-position: 50% 50%;
+  background-image: url("<%= asset_path('saltflat.jpg') %>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  opacity: .5;
+}
+
+.parallax-6 {
+  width: 100%;
+  min-height: 500px;
+  text-align: right;
+  padding-top: 50px;
+  color: white;
+  background-image: url("<%= asset_path('surf.gif') %>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  opacity: .5;
 }
 
 .page-section#rewards {
-
+  color: white;
+  background-image: url("<%= asset_path('surf.gif') %>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .page-section#rewards .table {
+  float: right;
   word-wrap: break-word;
   max-width: 800px;
 }
@@ -219,7 +259,7 @@ nav {
   background-color: #A8C1DE;
 }
 
-.parallax-6 {
+.parallax-7 {
   width: 100%;
   min-height: 700px;
   padding: 50px 0;
