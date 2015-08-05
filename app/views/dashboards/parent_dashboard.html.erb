@@ -96,15 +96,17 @@
     <section id="tasks" class="page-section">
       <div class="container">
         <div class="parentsphoto wow fadeInRight" data-wow-duration="6s" data-wow-delay="1s"><img ng-src="{{ image_url }}"><h5>Your current photo, {{ first_name }}.</h5></div>
-        <div ng-repeat="child in children" ng-click="toggleTask(child)">
+        <div ng-repeat="child in children">
           <div>
-            <h3>{{ child.first_name }}'s To Do List</h3>
+            <h3 ng-click="toggleTask(child)">{{ child.first_name }}'s To Do List</h3>
           </div>
           <span ng-show="child.show">
             <table class="table table-hover">
               <tr>
                 <th ng-click="toggleOrder('to_do')">Task</th>
+                <th></th>
                 <th ng-click="toggleOrder('amount_earned')">Amount</th>
+                <th></th>
                 <th>Edit</th>
               </tr>
               <tr ng-repeat="task in child.incomplete_tasks | orderBy:orderAttribute:descending">
@@ -148,16 +150,18 @@
 
     <section id="rewards" class="page-section">
       <div class="container">
-          <div ng-repeat="child in children" ng-click="toggleReward(child)">
+          <div ng-repeat="child in children">
           <div>
-            <h3>{{ child.first_name }}'s Rewards</h3>
+            <h3 ng-click="toggleReward(child)">{{ child.first_name }}'s Rewards</h3>
           </div>
            <span ng-show="child.show">
             <table class="table table-hover">
               <tr>
                 <th ng-click="toggleOrder('description')">Description</th>
+                <th></th>
                 <th ng-click="toggleOrder('amount_cost')">Price</th>
-                <th ng-click="toggleOrder('image_url')">Image/URL</th>
+                <th></th>
+                <th ng-click="toggleOrder('image_url')">Image/URL</th><th></th>
                 <th>Edit</th>
               </tr>
               <tr ng-repeat="reward in child.rewards_not_bought | orderBy:orderAttribute:descending">
