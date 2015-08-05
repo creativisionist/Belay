@@ -73,12 +73,12 @@
 
     <section id="tasks" class="page-section">
       <div class="container">
-        <div ng-repeat="child in children" ng-click="toggleTask()">
+        <div ng-repeat="child in children" ng-click="toggleTask(child)">
           <div>
             <h3>{{ child.first_name }}'s To Do List</h3>
           </div>
-          <span ng-hide="toggleTask()">
-            <table>
+          <span>
+            <table ng-show="child.show">
               <tr>
                 <th ng-click="toggleOrder('to_do')">Task</th>
                 <th ng-click="toggleOrder('amount_earned')">Amount</th>

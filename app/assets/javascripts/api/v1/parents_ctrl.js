@@ -30,8 +30,10 @@
       $scope.descending = !$scope.descending;
     };
 
-    $scope.toggleTask = function(){
-      this.toggleTask = !this.toggleTask;
+    $scope.toggleTask = function(child){
+      
+      child.show = !child.show;
+      
     };
 
     $scope.hoverIn=function() {
