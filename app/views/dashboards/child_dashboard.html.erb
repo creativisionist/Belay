@@ -91,7 +91,27 @@
 
   <section class="parallax-child-1">
     <div class="container">
+    </div>
+  </section>
+
+  <section class="parallax-child-2">
+    <div class="container">
+    </div>
+  </section>
+
+  <section class="parallax-child-3">
+    <div class="container">
       <h1>Patience is not the ability to wait, but the ability to keep a good attitude while waiting.</h1>
+    </div>
+  </section>
+
+  <section class="parallax-child-4">
+    <div class="container">
+    </div>
+  </section>
+
+  <section class="parallax-child-5">
+    <div class="container">
     </div>
   </section>
 
@@ -101,20 +121,21 @@
         <ol>
           <div>
             <h3>Current Balance To Spend:</h3> 
-            <h5>{{ total_balance }}  Points</h5>
+            <h4>{{ total_balance }}  Points</h4>
           </div>
         </ol>
 
         <h5>
           <ol>
             <h3> Total Investments:</h3>
-            <h5>{{ total_investments }}</h5>
+            <h4>{{ total_investments }}</h4>
             <h3> Total Investments + Balance Today: </h3>
-            <h5>{{ investments_and_balance }}</h5>
+            <h4>{{ investments_and_balance }}</h4>
             <h3> Current Interest Rate: </h3>
-            <h5>{{ interest_rate }} per day</h5>
+            <h4>{{ interest_rate }} per day</h4>
           </ol>
         </h5>
+        <div class="wow slideInRight" data-wow-duration="7s" data-wow-delay="0.5s"><h3>Onwards and upwards, dear child!</h3></div>
         <a href="#" class="scroll-top back-to-top">^</a>
       </div>
     </div>
@@ -133,7 +154,7 @@
           <th ng-click="toggleOrder('days_remaining')">Days Remaining</th>
           <th ng-click="toggleOrder('days_passed')">Days Passed</th>
           <th ng-click="toggleOrder('interest_rate')">Interest Rate</th>
-          <th ng-click="toggleOrder('money_invested')">Amount Invested</th>
+          <th ng-click="toggleOrder('money_invested')">Points Invested</th>
           <th ng-click="toggleOrder('investment_balance_to_date')">How Much You Have Today</th>
           <th>Place in Spending Balance</th>
         </tr>
@@ -164,7 +185,7 @@
       </div>
     </div>
 
-  <section class="parallax-child-3">
+  <section class="parallax-child-6">
     <div class="container">
       <h1>Great job, {{ first_name }}!</h1>
       <h2>Now onto the fun stuff...</h2>
