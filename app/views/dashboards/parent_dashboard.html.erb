@@ -15,7 +15,7 @@
             <% if user_is_child? %>
             <a href="<%= child_dashboard_path %>" class="navbar-brand scroll-top">Belay</a>
             <% else %>
-            <a href="<%= parent_dashboard_path %>" class="navbar-brand scroll-top">Belay</a>
+            <a href="<%= parent_dashboard_path %>" class="navbar-brand scroll-top"><img id="parentlogo" src="assets/logo_v1.png"></a>
             <% end %>
           </div>
           <div id="main-nav" class="collapse navbar-collapse">
@@ -148,7 +148,8 @@
 
     <section class="parallax-3">
       <div class="container">
-        <h1>To be in your children's memories tomorrow, you have to be in their lives today.</h1>
+        <h1>To be in your children's memories tomorrow,</h1>
+        <h1>you have to be in their lives today.</h1>
         <h1>-BJ</h1>
       </div>
     </section>
