@@ -118,6 +118,9 @@
       });
     };
       
+    $scope.toggleStuff = function(child){
+      child.show = !child.show;     
+    };
 
     $scope.approveTask=function(task_id){
       $http.patch('api/v1/parents/update_task/' + task_id + '.json', {
