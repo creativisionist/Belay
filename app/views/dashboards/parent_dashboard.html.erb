@@ -116,7 +116,7 @@
             <h3>{{ child.first_name }}'s Rewards</h3>
           </div>
            <span ng-show="child.show">
-            <table>
+            <table class="table table-hover">
               <tr>
                 <th ng-click="toggleOrder('description')">Description</th>
                 <th ng-click="toggleOrder('amount_cost')">Price</th>
@@ -157,7 +157,7 @@
           <h3>¯\_(ツ)_/¯</h3>
           <div ng-repeat="child in children">
             <h3>{{ child.first_name }}'s Stuff</h3>
-            <table>
+            <table class="table in table-hover">
               <tr>
                 <th ng-click="toggleOrder('to_do')">Task</th>
                 <th ng-click="toggleOrder('amount_earned')">Amount</th>
@@ -170,7 +170,7 @@
                 <td><button ng-click="incompleteTask(task.id)">Not Actually Complete</button></td>
               </tr>
             </table>
-            <table>
+            <table class="table in table-hover">
               <tr>
                 <th></th>
                 <th ng-click="toggleOrder('description')">Description</th>
