@@ -298,7 +298,10 @@ nav {
 }
 
 .page-section#checkoff {
-
+  background-position: 50% 50%;
+  background-image: url("<%= asset_path('pencil_line.png') %>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .page-section#checkoff .table {
@@ -310,8 +313,26 @@ nav {
   background-color: #A8C1DE;
 }
 
-.page-section#interest {
+.parallax-8 {
+  min-height: 500px;
+  background-position: 50% 50%;
+  background-image: url("<%= asset_path('pencil_line.png') %>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: .5;
+}
 
+.page-section#interest {
+  min-height: 800px;
+}
+
+.lastnote {
+  color: white;
+  float: right;
+  width: 200px;
+  height: 340px;
+  text-align: center;
+  background-color: #76A9CE;
 }
 
 

@@ -245,10 +245,17 @@
       </div>
     </section>
 
+    <section class="parallax-8">
+      <div class="container">
+      </div>
+    </section>
+
     <section id="interest" class="page-section">
       <div class="container">
-        <h1>The ability to discipline yourself to delay gratification in the short term in order to enjoy greater rewards in the long term, is the indispensable prerequisite to success.</h1>
-        <h1>-BT</h1>
+        <div class="quote wow fadeIn" data-wow-duration="6s" data-wow-delay="1s">
+          <h1>The ability to discipline yourself to delay gratification in the short term in order to enjoy greater rewards in the long term,<br /> is the indispensable prerequisite to success.</h1>
+          <h1>-BT</h1>
+        </div>
 
         <h3>Set interest rate per day for your children's investments:</h3>
           <div ng-repeat="child in children">
@@ -263,6 +270,9 @@
         <select ng-model="myChild" ng-options="child.first_name for child in children"></select>
         <button ng-click="addInterestRate(interestRate, myChild)">Save</button>
         <div><a href="#" class="scroll-top back-to-top">^</a></div>
+        <div class="lastnote wow fadeInUp" data-wow-duration="6s" data-wow-delay="5s">
+          <h5>And always remember:<br /> Your children know you love them by your presence,<br />not your presents.</h5>
+        </div>
       </div>
     </section>
   </div>
