@@ -135,13 +135,18 @@ nav {
   padding: 50px 0;
   text-align: center;
   background-position: 50% 50%;
-  background-image: url("<%= asset_path('beach.jpg') %>");
+  background-image: url("<%= asset_path('pourwine.gif') %>");
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: cover;
   opacity: .1;
 }
 
 .page-section#add {
+  color: #4F000B;
+  text-shadow: 1px 1px #909090;
+  padding-top: 30px;
+  text-align: right;
   background-position: 50% 50%;
   background-image: url("<%= asset_path('pourwine.gif') %>");
   background-repeat: no-repeat;
@@ -149,13 +154,25 @@ nav {
   background-size: cover;
 }
 
-.parallax-4 {
-  min-height: 600px;
+.parallax-4a {
+  min-height: 900px;
   padding: 50px 0;
   background-position: 50% 50%;
   background-image: url("<%= asset_path('pool.jpg') %>");
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: cover;
+  opacity: .5;
+}
+
+.parallax-4 {
+  min-height: 900px;
+  padding: 50px 0;
+  background-position: 50% 50%;
+  background-image: url("<%= asset_path('pool.jpg') %>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .parallax-4 h1 {

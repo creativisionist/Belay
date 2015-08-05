@@ -1,6 +1,7 @@
 json.array! @parents.each do |parent|
   json.id parent.id
   json.first_name parent.first_name
+  json.image_url parent.image_url
 
   json.children parent.children.each do |child|
     json.id child.id

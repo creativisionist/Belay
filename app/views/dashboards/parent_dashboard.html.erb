@@ -63,18 +63,18 @@
 
     <section id="add" class="page-section">
       <div class="container">
-        <h5>Add a Task</h5>
+        <h3>Add a Task</h3>
             <div>
-              Task: <input ng-model="toDo" placeholder="e.g.: Clean your room">
-              Points You Want Them to Earn:<input ng-model="amountEarned" placeholder="e.g.: 500">
+              Task:  <input ng-model="toDo" placeholder="e.g.: Clean your room"><br />
+              Points You Want Them to Earn:  <input ng-model="amountEarned" placeholder="e.g.: 500"><br /><br />
               <select ng-model="myChild" ng-options="child.first_name for child in children"></select>
               <button ng-click="addTask(toDo, amountEarned, myChild)">Save</button>
             </div>
-        <h5>Add a Reward</h5>
+        <h3>Add a Reward</h3>
             <div>
-              Reward: <input ng-model="rewardDescription" placeholder="e.g.: Late curfew">
-              Points You Want It to Cost:<input ng-model="amountCost" placeholder="e.g.: 800">
-              Image URL:<input ng-model="image" placeholder="e.g.: http://www.website/image.jpeg">
+              Reward:  <input ng-model="rewardDescription" placeholder="e.g.: Late curfew"><br />
+              Points You Want It to Cost:  <input ng-model="amountCost" placeholder="e.g.: 800"><br />
+              Image URL:  <input ng-model="image" placeholder="e.g.: http://www.website/image.jpeg"><br /><br />
               <select ng-model="myChild" ng-options="child.first_name for child in children"></select>
               <button ng-click="addReward(rewardDescription, amountCost, image, myChild)">Save</button>
             </div>
@@ -82,9 +82,14 @@
       </div>
     </section>
 
+    <section class="parallax-4a">
+      <div class="container">
+        <h1>Life is indeed like a fine wine...</h1>
+      </div>
+    </section>
+
     <section class="parallax-4">
       <div class="container">
-        <h1>Aloha!</h1>
       </div>
     </section>
 

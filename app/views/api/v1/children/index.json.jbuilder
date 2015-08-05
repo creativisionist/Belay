@@ -4,6 +4,7 @@ json.array! @children.each do |child|
   json.first_name child.first_name
   json.total_balance child.total_balance
   json.interest_rate child.interest_rate
+  json.image_url child.image_url
 
   json.current_investments child.interests_not_paid.each do |investment|
     json.id investment.id
