@@ -113,19 +113,55 @@ nav {
   min-height: 600px;
   padding: 50px 0;
   background-position: 50% 50%;
+  background-image: url("<%= asset_path('beach.jpg') %>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: .9;
+}
+
+.parallax-2 {
+  min-height: 600px;
+  padding: 50px 0;
+  text-align: center;
+  background-position: 50% 50%;
+  background-image: url("<%= asset_path('beach.jpg') %>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: .5;
+}
+
+.parallax-3 {
+  min-height: 600px;
+  padding: 50px 0;
+  text-align: center;
+  background-position: 50% 50%;
+  background-image: url("<%= asset_path('beach.jpg') %>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: .1;
+}
+
+.page-section#add {
+  background-position: 50% 50%;
+  background-image: url("<%= asset_path('pourwine.gif') %>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.parallax-4 {
+  min-height: 600px;
+  padding: 50px 0;
+  background-position: 50% 50%;
   background-image: url("<%= asset_path('pool.jpg') %>");
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
-.parallax-1 h1 {
+.parallax-4 h1 {
   padding: 50px;
   padding-left: 200px;
   color: #ABABAB;
-}
-
-.page-section#add {
-
 }
 
 .page-section#tasks {
@@ -142,7 +178,7 @@ nav {
 }
 
 
-.parallax-2 {
+.parallax-5 {
   min-height: 500px;
   padding: 50px 0;
   text-align: right;
@@ -166,7 +202,7 @@ nav {
   background-color: #A8C1DE;
 }
 
-.parallax-3 {
+.parallax-6 {
   width: 100%;
   min-height: 700px;
   padding: 50px 0;
@@ -275,7 +311,7 @@ nav {
 
 }
 
-#bubble1 {
+.bubble1 {
   width: 50px;
   height: 50px;
   margin-left: 31em;
@@ -283,7 +319,7 @@ nav {
   position: absolute;
 }
 
-#bubble2 {
+.bubble2 {
   width: 70px;
   height: 70px;
   margin-left: 38em;
@@ -291,7 +327,7 @@ nav {
   position: absolute;
 }
 
-#bubble3 {
+.bubble3 {
   width: 60px;
   height: 60px;
   margin-left: 40em;
@@ -300,7 +336,7 @@ nav {
 }
 
 
-#bubble4 {
+.bubble4 {
   width: 45px;
   height: 45px;
   margin-left: 47em;
@@ -308,7 +344,7 @@ nav {
   position: absolute;
 }
 
-#bubble5 {
+.bubble5 {
   width: 80px;
   height: 80px;
   margin-left: 33em;
@@ -316,7 +352,7 @@ nav {
   position: absolute;
 }
 
-#bubble6 {
+.bubble6 {
   width: 65px;
   height: 65px;
   margin-left: 43em;
@@ -324,7 +360,7 @@ nav {
   position: absolute;
 }
 
-#bubble7 {
+.bubble7 {
   width: 65px;
   height: 65px;
   margin-left: 38em;
@@ -332,7 +368,7 @@ nav {
   position: absolute;
 }
 
-#bubble8 {
+.bubble8 {
   width: 30px;
   height: 30px;
   margin-left: 20em;
@@ -340,7 +376,7 @@ nav {
   position: absolute;
 }
 
-#bubble9 {
+.bubble9 {
   width: 50px;
   height: 50px;
   margin-left: 10em;
@@ -348,7 +384,7 @@ nav {
   position: absolute;
 }
 
-#bubble10 {
+.bubble10 {
   width: 30px;
   height: 30px;
   margin-left: 80em;
@@ -356,7 +392,7 @@ nav {
   position: absolute;
 }
 
-#bubble11 {
+.bubble11 {
   width: 65px;
   height: 65px;
   margin-left: 85em;
@@ -364,7 +400,7 @@ nav {
   position: absolute;
 }
 
-#bubble12 {
+.bubble12 {
   width: 82px;
   height: 82px;
   margin-left: 70em;
@@ -372,7 +408,7 @@ nav {
   position: absolute;
 }
 
-#bubble13 {
+.bubble13 {
   width: 78px;
   height: 78px;
   margin-left: 56em;
@@ -380,7 +416,7 @@ nav {
   position: absolute;
 }
 
-#bubble14 {
+.bubble14 {
   width: 25px;
   height: 25px;
   margin-left: 1em;
@@ -388,7 +424,7 @@ nav {
   position: absolute;
 }
 
-#bubble15 {
+.bubble15 {
   width: 53px;
   height: 53px;
   margin-left: 7em;
@@ -396,7 +432,7 @@ nav {
   position: absolute;
 }
 
-#bubble16 {
+.bubble16 {
   width: 85px;
   height: 85px;
   margin-left: 80em;
@@ -404,15 +440,13 @@ nav {
   position: absolute;
 }
 
-#bubble17 {
+.bubble17 {
   width: 100px;
   height: 100px;
   margin-left: 48em;
   margin-top: 37em;
   position: absolute;
 }
-
-
 
 .parallax-child-1 {
   min-height: 500px;
@@ -473,7 +507,7 @@ nav {
 
 .page-section#bank {
   color: white;
-  text-shadow: 1px 1px grey;
+  text-shadow: 1px 1px #808080;
   background-image:  url("<%= asset_path('racehorse.gif') %>");
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -514,7 +548,7 @@ nav {
   margin-top: 790px;
 }
 
-#minions {
+.minions {
   float: right;
   margin-top: -387px;
   width: 400px;

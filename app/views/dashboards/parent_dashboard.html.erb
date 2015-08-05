@@ -44,6 +44,23 @@
       </div>
     </section>
 
+    <section class="parallax-1">
+      <div class="container">
+      </div>
+    </section>
+
+    <section class="parallax-2">
+      <div class="container">
+        <h1>Kick back and...</h1>
+      </div>
+    </section>
+
+    <section class="parallax-3">
+      <div class="container">
+        <h1>...pour yourself a glass.</h1>
+      </div>
+    </section>
+
     <section id="add" class="page-section">
       <div class="container">
         <h5>Add a Task</h5>
@@ -65,7 +82,7 @@
       </div>
     </section>
 
-    <section class="parallax-1">
+    <section class="parallax-4">
       <div class="container">
         <h1>Aloha!</h1>
       </div>
@@ -104,7 +121,7 @@
       </div>
     </section>
 
-    <section class="parallax-2">
+    <section class="parallax-5">
       <div class="container">
         <h1>Remember to reward yourself, too.</h1>
       </div>
@@ -146,7 +163,7 @@
       </div>
     </section>
 
-    <section class="parallax-3">
+    <section class="parallax-6">
       <div class="container">
         <h1>To be in your children's memories tomorrow,</h1>
         <h1>you have to be in their lives today.</h1>
@@ -164,8 +181,8 @@
               <tr>
                 <h4>The best preparation for good work tomorrow is to do good work today. -EH</h4>
                 <th ng-click="toggleOrder('to_do')">Task</th>
-                <th ng-click="toggleOrder('amount_earned')">Amount</th>
-                <th>Even if they didn't complete it give them a hug, anyway. :)</th>
+                <th ng-click="toggleOrder('amount_earned')">Points</th>
+                <th>Even if {{ child.first_name }} didn't complete it give 'em a hug, anyway. :)</th>
               </tr>
               <tr ng-repeat="task in child.tasks_needing_approval | orderBy:orderAttribute:descending">
                 <td>{{ task.to_do }}</td>
@@ -219,9 +236,6 @@
   </div>
 </div>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
-<script src="/path/to/parallax.min.js"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function() {
   // navigation click actions 
