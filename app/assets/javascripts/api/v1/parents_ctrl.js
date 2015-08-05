@@ -31,19 +31,7 @@
     };
 
     $scope.toggleTask = function(child){
-      
-      child.show = !child.show;
-      
-    };
-
-    $scope.hoverIn=function() {
-        this.hoverTask = true;
-        this.hoverReward = true;
-    };
-
-    $scope.hoverOut=function() {
-        this.hoverTask = false;
-        this.hoverReward = false;
+      child.show = !child.show;     
     };
 
     $scope.addTask=function(toDo, amountEarned, child) {
@@ -76,6 +64,10 @@
       }).success(function(response){
       });
       task.enableEditor = false;
+    };
+
+    $scope.toggleReward = function(child){
+      child.show = !child.show;     
     };
 
     $scope.addReward=function(rewardDescription, amountCost, image, child){
