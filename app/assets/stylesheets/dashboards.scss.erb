@@ -187,7 +187,7 @@
 }
 
 .emoji .text {
-  float: right;
+  float: 20;
   margin: 50px;
   color: black;
   padding-top: 50px;
@@ -200,15 +200,11 @@
   border-radius: 50%;
 }
 
-.emoji .ng-enter {
-  -webkit-animation: slideInRight 1s;
-  -moz-animation: slideInRight 1s;
-  -o-animation: slideInRight 1s;
-  animation: slideInRight 1s; 
-}
-
-.page-section#todo {
-
+.page-section#todo .table {
+  max-width: 300px;
+  word-wrap: break-word;
+  margin-left: 20px;
+  margin-top: 20px;
 }
 
 .parallax-child-1 {
@@ -232,11 +228,17 @@
   background-position: right;
 }
 
+.page-section#investments .table {
+  word-wrap: break-word;
+  max-width: 1100px;
+}
+
 .parallax-child-3 {
   width: 100%;
   min-height: 500px;
   padding: 50px 0;
   color: #FAE256;
+  text-align: center;
   background-image: url("<%= asset_path('landscape3.jpg') %>");
   background-position: center;
   background-repeat: no-repeat;

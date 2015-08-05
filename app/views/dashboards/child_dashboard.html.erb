@@ -45,7 +45,6 @@
 
   <div id="todo" class="page-section">
     <div class="container">
-
     <h2>Tasks To Complete:</h2>
       <div class="emoji wow rollIn">
         <div class="text">
@@ -54,7 +53,7 @@
         <h5>Do something today that <br />your future self will thank you for.</h5>
         </div>
       </div>
-      <table class="table table-striped">
+      <table class="table table-hover">
         <tr>
           <th ng-click="toggleOrder('to_do')">Task</th>
           <th ng-click="toggleOrder('amount_earned')">Amount</th>
@@ -62,7 +61,7 @@
         <tr ng-repeat="task in incomplete_tasks | orderBy:orderAttribute:descending">
           <td>{{ task.to_do }}</td>
           <td>{{ task.amount_earned }}</td>
-          <td><button ng-click="updateTaskStatus(task.id)">Complete
+          <td "col-sm-1"><button ng-click="updateTaskStatus(task.id)">Complete
           </button></td>
         </tr>
       </table>
@@ -109,7 +108,7 @@
           <h2> Current Investments:</h2>
           Total #: {{ current_investments.length }}
         </div>
-        <table>
+        <table class="table table-striped">
         <tr>
           <th ng-click="toggleOrder('investment_date')">Created</th>  
           <th ng-click="toggleOrder('duration')">Duration Invested</th>
@@ -118,6 +117,7 @@
           <th ng-click="toggleOrder('interest_rate')">Interest Rate</th>
           <th ng-click="toggleOrder('money_invested')">Amount Invested</th>
           <th ng-click="toggleOrder('investment_balance_to_date')">How Much You Have Today</th>
+          <th>Place in Spending Balance</th>
         </tr>
         <tr ng-repeat="investment in current_investments | orderBy:orderAttribute:descending">
           <td>{{ investment.investment_date }}</td>
@@ -128,7 +128,7 @@
           <td>{{ investment.money_invested }}</td>
           <td>{{ investment.investment_balance_to_date }}</td>
           <td ng-if="investment.withdrawl_status === 'complete'">
-          <button ng-click="payOutInvestment(investment.id)">Place in Spending Balance
+          <button ng-click="payOutInvestment(investment.id)">Cash Out
           </button></td>
         </tr>
       </table>
@@ -156,7 +156,7 @@
     <div id="store" class="page-section">
       <div class="container">
       <h2>Ready to Shop?</h2>
-          <table>
+          <table class="table table-hover">
             <tr>
               <th ng-click="toggleOrder('description')">Description</th>
               <th ng-click="toggleOrder('amount_cost')">Price</th>
