@@ -216,6 +216,7 @@ nav {
   width:100%;
   min-height: 800px;
   padding: 50px 0;
+  background-color: #F8FFD8;
   background-image: url("<%= asset_path('children.jpg') %>");
   background-position: right;
   background-repeat: no-repeat;
@@ -225,6 +226,18 @@ nav {
 .title-child h1 {
   margin: 100px 0;
   color: #57CF5B;
+}
+
+.caption {
+  text-align: center;
+  background-color: #70C9C9;
+  height: 50px;
+  width: 100%;
+}
+
+.caption h3 {
+  color: #A4E890;
+  padding-top: 8px;
 }
 
 .emoji {
@@ -238,7 +251,7 @@ nav {
 }
 
 .emoji .text {
-  float: 20;
+  float: 20px;
   margin: 50px;
   color: black;
   padding-top: 50px;
@@ -252,24 +265,175 @@ nav {
 }
 
 .page-section#todo .table {
-  max-width: 300px;
+  max-width: 400px;
   word-wrap: break-word;
   margin-left: 20px;
   margin-top: 20px;
 }
+
+.page-section#todo {
+
+}
+
+#bubble1 {
+  width: 50px;
+  height: 50px;
+  margin-left: 31em;
+  margin-top: 5em;
+  position: absolute;
+}
+
+#bubble2 {
+  width: 70px;
+  height: 70px;
+  margin-left: 38em;
+  margin-top: 10em;
+  position: absolute;
+}
+
+#bubble3 {
+  width: 60px;
+  height: 60px;
+  margin-left: 40em;
+  margin-top: 7em;
+  position: absolute;
+}
+
+
+#bubble4 {
+  width: 45px;
+  height: 45px;
+  margin-left: 47em;
+  margin-top: 13em;
+  position: absolute;
+}
+
+#bubble5 {
+  width: 80px;
+  height: 80px;
+  margin-left: 33em;
+  margin-top: 20em;
+  position: absolute;
+}
+
+#bubble6 {
+  width: 65px;
+  height: 65px;
+  margin-left: 43em;
+  margin-top: 30em;
+  position: absolute;
+}
+
+#bubble7 {
+  width: 65px;
+  height: 65px;
+  margin-left: 38em;
+  margin-top: 35em;
+  position: absolute;
+}
+
+#bubble8 {
+  width: 30px;
+  height: 30px;
+  margin-left: 20em;
+  margin-top: 40em;
+  position: absolute;
+}
+
+#bubble9 {
+  width: 50px;
+  height: 50px;
+  margin-left: 10em;
+  margin-top: 44em;
+  position: absolute;
+}
+
+#bubble10 {
+  width: 30px;
+  height: 30px;
+  margin-left: 80em;
+  margin-top: 44em;
+  position: absolute;
+}
+
+#bubble11 {
+  width: 65px;
+  height: 65px;
+  margin-left: 85em;
+  margin-top: 46em;
+  position: absolute;
+}
+
+#bubble12 {
+  width: 82px;
+  height: 82px;
+  margin-left: 70em;
+  margin-top: 42em;
+  position: absolute;
+}
+
+#bubble13 {
+  width: 78px;
+  height: 78px;
+  margin-left: 56em;
+  margin-top: 28em;
+  position: absolute;
+}
+
+#bubble14 {
+  width: 25px;
+  height: 25px;
+  margin-left: 1em;
+  margin-top: 43em;
+  position: absolute;
+}
+
+#bubble15 {
+  width: 53px;
+  height: 53px;
+  margin-left: 7em;
+  margin-top: 35em;
+  position: absolute;
+}
+
+#bubble16 {
+  width: 85px;
+  height: 85px;
+  margin-left: 80em;
+  margin-top: 25em;
+  position: absolute;
+}
+
+#bubble17 {
+  width: 100px;
+  height: 100px;
+  margin-left: 48em;
+  margin-top: 37em;
+  position: absolute;
+}
+
+
 
 .parallax-child-1 {
   min-height: 500px;
   padding: 50px 0;
   text-align: right;
   color: #8AFAD5;
+  text-shadow: 1px 1px #A8C1DE;
   background-image: url("<%= asset_path('bubbles.png') %>");
+  background-position: 50% 50%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+
 }
 
 .page-section#bank {
-
+  background-image:  url("<%= asset_path('racehorse.gif') %>");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .page-section#investments {
@@ -290,18 +454,26 @@ nav {
 
 .parallax-child-3 {
   width: 100%;
-  min-height: 500px;
+  min-height: 800px;
   padding: 50px 0;
   color: #FAE256;
   text-align: center;
   background-image: url("<%= asset_path('landscape3.jpg') %>");
   background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
-.page-section#store {
+.drumroll {
+  margin-top: 790px;
+}
 
+#minions {
+  float: right;
+  margin-top: -387px;
+  width: 400px;
+  height: 800px;
 }
 
 .page-section#store .table {

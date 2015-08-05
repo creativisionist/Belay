@@ -44,9 +44,29 @@
   </div>
 
   <div id="todo" class="page-section">
+    <div class="caption wow slideInDown" data-wow-duration="2s"><h3>Are you ready for some fun today?</h3></div>
     <div class="container">
+
+    <img id="bubble1" src="assets/bubble.png" class="wow fadeInUp" data-wow-duration="6s" data-wow-delay="6s">
+    <img id="bubble2" src="assets/bubble.png" class="wow fadeInUp" data-wow-duration="5s" data-wow-delay="4s">
+    <img id="bubble3" src="assets/bubble.png" class="wow fadeInUp" data-wow-duration="4s" data-wow-delay="4.5s">
+    <img id="bubble4" src="assets/bubble.png" class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="5s">
+    <img id="bubble5" src="assets/bubble.png" class="wow fadeInUp" data-wow-duration="3s" data-wow-delay="4s">
+    <img id="bubble6" src="assets/bubble.png" class="wow fadeInUp" data-wow-duration="2.5s" data-wow-delay="5s">
+    <img id="bubble7" src="assets/bubble.png" class="wow fadeInUp" data-wow-duration="4.5s" data-wow-delay="3.5s">
+    <img id="bubble8" src="assets/bubble.png" class="wow fadeInUp" data-wow-duration="3.5s" data-wow-delay="5s">
+    <img id="bubble9" src="assets/bubble.png" class="wow fadeInUp" data-wow-duration="3.5s" data-wow-delay="4s">
+    <img id="bubble10" src="assets/bubble.png" class="wow fadeInUp" data-wow-duration="4s" data-wow-delay="3.5s">
+    <img id="bubble11" src="assets/bubble.png" class="wow fadeInUp" data-wow-duration="3s" data-wow-delay="3s">
+    <img id="bubble12" src="assets/bubble.png" class="wow fadeInUp" data-wow-duration="3s" data-wow-delay="2s">
+    <img id="bubble13" src="assets/bubble.png" class="wow fadeInUp" data-wow-duration="2.5s" data-wow-delay="3.5s">
+    <img id="bubble14" src="assets/bubble.png" class="wow fadeInUp" data-wow-duration="4s" data-wow-delay="2s">
+    <img id="bubble15" src="assets/bubble.png" class="wow fadeInUp" data-wow-duration="7s" data-wow-delay="2s">
+    <img id="bubble16" src="assets/bubble.png" class="wow fadeInUp" data-wow-duration="7s" data-wow-delay="2s">
+    <img id="bubble17" src="assets/bubble.png" class="wow fadeInUp" data-wow-duration="4s" data-wow-delay="3s">
+
     <h2>Tasks To Complete:</h2>
-      <div class="emoji wow rollIn">
+      <div class="emoji wow rollIn" data-wow-duration="2s" data-wow-delay="2s">
         <div class="text">
         <h3>Total #: {{ incomplete_tasks.length }}</h3>
         <h2>¯\_(ツ)_/¯</h2>
@@ -56,7 +76,7 @@
       <table class="table table-hover">
         <tr>
           <th ng-click="toggleOrder('to_do')">Task</th>
-          <th ng-click="toggleOrder('amount_earned')">Amount</th>
+          <th ng-click="toggleOrder('amount_earned')">Points</th>
         </tr>
         <tr ng-repeat="task in incomplete_tasks | orderBy:orderAttribute:descending">
           <td>{{ task.to_do }}</td>
@@ -80,21 +100,19 @@
       <h2>Bank Account:</h2>
         <ol>
           <div>
-            <h3> Current Balance To Spend:</h3> 
-            {{ total_balance }}  Points
+            <h3>Current Balance To Spend:</h3> 
+            <h5>{{ total_balance }}  Points</h5>
           </div>
         </ol>
 
         <h5>
           <ol>
             <h3> Total Investments:</h3>
-              {{ total_investments }}
-
+            <h5>{{ total_investments }}</h5>
             <h3> Total Investments + Balance Today: </h3>
-              {{ investments_and_balance }}
-            
+            <h5>{{ investments_and_balance }}</h5>
             <h3> Current Interest Rate: </h3>
-              {{ interest_rate }} per day
+            <h5>{{ interest_rate }} per day</h5>
           </ol>
         </h5>
         <a href="#" class="scroll-top back-to-top">^</a>
@@ -110,7 +128,7 @@
         </div>
         <table class="table table-striped">
         <tr>
-          <th ng-click="toggleOrder('investment_date')">Created</th>  
+          <th ng-click="toggleOrder('investment_date')">Created</th> 
           <th ng-click="toggleOrder('duration')">Duration Invested</th>
           <th ng-click="toggleOrder('days_remaining')">Days Remaining</th>
           <th ng-click="toggleOrder('days_passed')">Days Passed</th>
@@ -149,8 +167,9 @@
   <section class="parallax-child-3">
     <div class="container">
       <h1>Great job, {{ first_name }}!</h1>
-      <h2>Now on to the fun stuff...</h2>
+      <h2>Now onto the fun stuff...</h2>
     </div>
+    <div class="drumroll"><h1>Drumroll, please...</h1></div>
   </section>
 
     <div id="store" class="page-section">
@@ -173,6 +192,7 @@
           </table>
           <div><a href="#" class="scroll-top back-to-top">^</a></div>
         </div>
+        <img id="minions" src="assets/minions.png" class="wow bounceInDown" data-wow-duration="6s" data-wow-delay="2s>
       </div>
     </div>
 
