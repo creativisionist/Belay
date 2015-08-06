@@ -209,8 +209,8 @@
     <section id="checkoff" class="page-section">
       <div class="container">
         <h2>Check Off Time!</h2>
-          <div ng-repeat="child in children" ng-click="toggleStuff(child)">
-            <h3>{{ child.first_name }}'s Stuff</h3>
+          <div ng-repeat="child in children">
+            <h3 ng-click="toggleStuff(child)">{{ child.first_name }}'s Stuff</h3>
             <span ng-show="child.show">
               <table class="table in table-hover">
                 <tr>
