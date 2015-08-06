@@ -1,0 +1,74 @@
+.header .navbar-brand {
+  font-weight: 900;
+}
+
+.header .navbar {
+  margin: 0;
+  border: none;
+}
+
+#logo {
+  height: 50px;
+  weight: 50px;
+  // height: 250%;
+  // width: 20%;
+  // margin-top: -17px;
+}
+
+.header {
+  font-family: 'Kaushan Script', cursive;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  background-color: white;
+}
+
+.title-edit {
+  font-family: 'Kaushan Script', cursive;
+  margin-top: 100px;
+  margin-right: 80px;
+}
+
+#edit {
+  font-family: 'Kaushan Script', cursive;
+  width: 100%;
+  min-height: 710px;
+  padding: 50px 0;
+  color: black;
+  text-shadow: 1px 1px #A8C1DE;
+  position: absolute;
+  z-index: 1;
+}
+
+.bg-edit {
+  width: 100%;
+  min-height: 687px;
+  background-image: url("<%= asset_path('penguin.gif') %>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.parallax-edit {
+  width: 100%;
+  min-height: 697px;
+  text-align: center;
+  background-image: url("<%= asset_path('penguin.gif') %>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  opacity: .5;
+}
+
+@media (min-width: 768px) {
+  .header .navbar-brand {
+    padding-left: 45px;
+  }
+  .navbar-nav {
+    float: right;
+  }
+}
+
+@media (max-width: 480px) {
+
+}
