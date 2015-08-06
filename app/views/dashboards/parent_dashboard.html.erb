@@ -212,10 +212,9 @@
           <div ng-repeat="child in children">
             <h3 ng-click="toggleStuff(child)">{{ child.first_name }}'s Stuff</h3>
             <span ng-show="child.show">
-              <h4>The best preparation for good work tomorrow is to do good work today. -EH</h4>
               <table class="table in table-hover">
                 <tr>
-                  
+                  <h4>The best preparation for good work tomorrow is to do good work today. -EH</h4>
                   <th ng-click="toggleOrder('to_do')">Task</th>
                   <th ng-click="toggleOrder('amount_earned')">Points</th>
                   <th>Even if {{ child.first_name }} didn't complete it give 'em a hug, anyway. :)</th>
